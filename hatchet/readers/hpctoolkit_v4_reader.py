@@ -519,10 +519,6 @@ class MetaReader:
                 psi_name = self.__read_string(psi_name_pointer)
                 self.metric_id_name_map[psi_metric_id] = (metric_name, psi_name)
 
-                
-
-
-
     def __get_function_index(self, function_pointer: int) -> int:
         """
         Given the pointer to where the function would exists in meta.db,
@@ -1062,7 +1058,7 @@ class ProfileReader:
         for i in range(num_profiles):
             file_index = profiles_pointer + (i * profile_size)
             self.__read_PI(file_index, i)
-            
+
     def __read_PI(self, pi_pointer: int, pi_index: int) -> None:
         self.file.seek(pi_pointer)
 
@@ -1070,8 +1066,6 @@ class ProfileReader:
         # We don't need to read this section unless we want
         # the summary statistics.
         self.file.read(0x20)
-
-
 
         # Identifier tuple for this profile
         hit_pointer = int.from_bytes(
@@ -1087,9 +1081,6 @@ class ProfileReader:
         if hit_pointer == 0:
             # this is a summary profile
             self.summary_profile_index = pi_index
-
-            
-
 
     def get_hit_from_profile(self, index: int) -> list:
         profile = self.profile_info_list[index]
@@ -1585,8 +1576,6 @@ class CCTReader:
             metric = self.meta_reader.metric_id_name_map[metric_id][0]
             metric_type = self.meta_reader.metric_id_name_map[metric_id][1]
 
-            # visited_metrics.add(metric + " (inc)")
-
             # get the default inclusive and exclusive metric type
             # for the corresponding metric.
             exc, inc = None, None
@@ -1600,7 +1589,7 @@ class CCTReader:
                 self.inclusive_metrics.add(metric)
             elif metric_type == exc:
                 self.exclusive_metrics.add(metric)
-            
+
             # store all the visited metrics.
             # we will use this later to fill the missing values.
             visited_metrics.add(metric)
