@@ -32,7 +32,6 @@ class MetaReader:
         self.nid_to_ctx = {}
         self.node_map = {}
         self.metric_id_name_map = {}
-        self.stat_metric_id_name_map = {}
         self.number_of_metric_types = 0
 
         # The meta.db header consists of the common .db header and n sections.
@@ -520,48 +519,6 @@ class MetaReader:
                 psi_name = self.__read_string(psi_name_pointer)
                 self.metric_id_name_map[psi_metric_id] = (metric_name, psi_name)
 
-            # to read SS metrics -- skipping for now - may be useful in future
-            # for i in range(number_of_ss_metrics):
-            #     self.file.seek(ss_pointer + (size_of_ss * i))
-            
-            #     p_scope = int.from_bytes(
-            #         self.file.read(8), byteorder=self.byte_order, signed=self.signed
-            #     )
-                
-            #     p_formula_name = int.from_bytes(
-            #         self.file.read(8), byteorder=self.byte_order, signed=self.signed
-            #     )
-
-
-            #     formula_name = self.__read_string(p_formula_name)
-            #     combine = int.from_bytes( 
-            #         self.file.read(1), byteorder=self.byte_order, signed=self.signed
-            #     )
-            #     # empty space
-            #     self.file.read(1)
-
-            #     stat_metric_id = int.from_bytes(
-            #         self.file.read(2), byteorder=self.byte_order, signed=self.signed
-            #     )
-            #     # empty space
-            #     self.file.read(4)
-
-            #     # reading the Scope value
-            #     self.file.seek(p_scope)
-                
-            #     p_scope_name = int.from_bytes(
-            #         self.file.read(8), byteorder=self.byte_order, signed=self.signed
-            #     )
-            #     scope_name = self.__read_string(p_scope_name)
-
-            #     type = int.from_bytes(
-            #         self.file.read(1), byteorder=self.byte_order, signed=self.signed
-            #     )
-            #     propogation_index = int.from_bytes(
-            #         self.file.read(1), byteorder=self.byte_order, signed=self.signed
-            #     )
-                
-            #     self.stat_metric_id_name_map[stat_metric_id] = (metric_name, scope_name)
                 
 
 
@@ -1111,30 +1068,9 @@ class ProfileReader:
 
         # Profile-Major Sparse Value Block.
         # We don't need to read this section unless we want
-        # the summary statistics. The commented out lines below
-        # show how to read PSVB in case we read it in future.
+        # the summary statistics.
         self.file.read(0x20)
-        
-        # # READ PSVB
-        # num_values = int.from_bytes(
-        #     self.file.read(8), byteorder=self.byte_order, signed=self.signed
-        # )
 
-        # values_pointer = int.from_bytes(
-        #     self.file.read(8), byteorder=self.byte_order, signed=self.signed
-        # )
-
-        # num_contexts = int.from_bytes(
-        #     self.file.read(4), byteorder=self.byte_order, signed=self.signed
-        # )
-
-        # # empty space
-        # self.file.read(4)
-
-        # context_pointer = int.from_bytes(
-        #     self.file.read(8), byteorder=self.byte_order, signed=self.signed
-        # )
-        # # FINISHED READING PSVB
 
 
         # Identifier tuple for this profile
@@ -1152,51 +1088,6 @@ class ProfileReader:
             # this is a summary profile
             self.summary_profile_index = pi_index
 
-        # For reading Stat Metric Values - not needed for now
-        # # Bit 0: isSummary
-        # if flags & 1 != 0:
-        #     is_summary = True
-        # else:
-        #     is_summary = False
-
-        # context_list = []
-        # context_size = 12
-        # values_size = 10
-        # # print('values pointer', values_pointer)
-        # # print('context pointer', context_pointer)
-        # # read in all contexts
-        # for i in range(num_contexts):
-        #     context_index = context_pointer + (i * context_size)
-        #     self.file.seek(context_index)
-
-        #     context_id = int.from_bytes(
-        #         self.file.read(4), byteorder=self.byte_order, signed=self.signed
-        #     )
-
-        #     metrics_start_index = int.from_bytes(
-        #         self.file.read(8), byteorder=self.byte_order, signed=self.signed
-        #     )
-        #     # # print('metric start index:', metrics_start_index)
-        #     context_list.append((context_id, metrics_start_index))
-        # context_list.append((-1, num_values))
-
-        # # read in all values
-        # # print('flag:', bin(flags))
-        # # print('is_summary:', is_summary)
-        # self.file.seek(values_pointer)
-        # for i in range(num_values):
-        #     # self.file.seek(values_pointer + (i * values_size))
-            
-        #     metric_id = int.from_bytes(
-        #         self.file.read(2), byteorder=self.byte_order, signed=self.signed
-        #     )
-        #     metric_value = int.from_bytes(
-        #         self.file.read(8), byteorder=self.byte_order, signed=self.signed
-        #     )
-        #     if is_summary:
-        #         metric_name = self.meta_reader.stat_metric_id_name_map[metric_id][0]
-        #     else:
-        #         metric_name = self.meta_reader.metric_id_name_map[metric_id][0]
             
 
 
@@ -1718,7 +1609,6 @@ class CCTReader:
             # track of visited profiles.
             __read_profiles(
                 next_metric_index,
-                # None,
                 visited_profiles,
                 node_name,
                 node,
