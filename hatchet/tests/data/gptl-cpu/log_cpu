@@ -1,0 +1,1510 @@
+----------------------------------------------------------------------
+Beginning MPAS-ocean Output Log File for task       0 of       1
+    Opened at 2024/05/20 14:14:58
+----------------------------------------------------------------------
+
+ Reading namelist from file namelist.ocean
+ *** Encountered an issue while attempting to read namelist record forward_backward
+     The following values will be used for variables in this record:
+ 
+         config_fb_weight_1 = 0.531000000000000
+         config_fb_weight_2 = 0.531000000000000
+         config_fb_weight_3 = 0.313000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record init_mode_subgrid
+     The following values will be used for variables in this record:
+ 
+         config_subgrid_table_levels = -1
+ 
+ *** Encountered an issue while attempting to read namelist record baroclinic_channel
+     The following values will be used for variables in this record:
+ 
+         config_baroclinic_channel_vert_levels = 20
+         config_baroclinic_channel_use_distances = F
+         config_baroclinic_channel_surface_temperature = 13.1000000000000
+         config_baroclinic_channel_bottom_temperature = 10.1000000000000
+         config_baroclinic_channel_temperature_difference = 1.20000000000000
+         config_baroclinic_channel_gradient_width_frac = 0.800000000000000E-01
+         config_baroclinic_channel_gradient_width_dist = 40000.0000000000
+         config_baroclinic_channel_bottom_depth = 1000.00000000000
+         config_baroclinic_channel_salinity = 35.0000000000000
+         config_baroclinic_channel_coriolis_parameter = -0.120000000000000E-03
+ 
+ *** Encountered an issue while attempting to read namelist record lock_exchange
+     The following values will be used for variables in this record:
+ 
+         config_lock_exchange_vert_levels = 20
+         config_lock_exchange_bottom_depth = 20.0000000000000
+         config_lock_exchange_cold_temperature = 5.00000000000000
+         config_lock_exchange_warm_temperature = 30.0000000000000
+         config_lock_exchange_direction = y
+         config_lock_exchange_salinity = 35.0000000000000
+         config_lock_exchange_layer_type = z-level
+         config_lock_exchange_isopycnal_min_thickness = 0.100000000000000E-01
+ 
+ *** Encountered an issue while attempting to read namelist record internal_waves
+     The following values will be used for variables in this record:
+ 
+         config_internal_waves_vert_levels = 20
+         config_internal_waves_use_distances = F
+         config_internal_waves_surface_temperature = 20.1000000000000
+         config_internal_waves_bottom_temperature = 10.1000000000000
+         config_internal_waves_temperature_difference = 2.00000000000000
+         config_internal_waves_amplitude_width_frac = 0.330000000000000
+         config_internal_waves_amplitude_width_dist = 50000.0000000000
+         config_internal_waves_bottom_depth = 500.000000000000
+         config_internal_waves_salinity = 35.0000000000000
+         config_internal_waves_layer_type = z-level
+         config_internal_waves_isopycnal_displacement = 125.000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record overflow
+     The following values will be used for variables in this record:
+ 
+         config_overflow_vert_levels = 100
+         config_overflow_use_distances = F
+         config_overflow_bottom_depth = 2000.00000000000
+         config_overflow_ridge_depth = 500.000000000000
+         config_overflow_plug_temperature = 10.0000000000000
+         config_overflow_domain_temperature = 20.0000000000000
+         config_overflow_salinity = 35.0000000000000
+         config_overflow_plug_width_frac = 0.100000000000000
+         config_overflow_slope_center_frac = 0.200000000000000
+         config_overflow_slope_width_frac = 0.500000000000000E-01
+         config_overflow_plug_width_dist = 20000.0000000000
+         config_overflow_slope_center_dist = 40000.0000000000
+         config_overflow_slope_width_dist = 7000.00000000000
+         config_overflow_layer_type = z-level
+         config_overflow_isopycnal_min_thickness = 0.100000000000000E-01
+ 
+ *** Encountered an issue while attempting to read namelist record dam_break
+     The following values will be used for variables in this record:
+ 
+         config_dam_break_vert_levels = 1
+         config_dam_break_eta0 = 0.600000000000000
+         config_dam_break_dc = 0.400000000000000E-01
+         config_dam_break_R0 = 24.2000000000000
+         config_dam_break_Xl = 1.00000000000000
+         config_dam_break_Yl = 2.00000000000000
+         config_dam_break_Inlet = 0.400000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record global_ocean
+     The following values will be used for variables in this record:
+ 
+         config_global_ocean_minimum_depth = 15.0000000000000
+         config_global_ocean_depth_file = vertical_grid.nc
+         config_global_ocean_depth_dimname = nVertLevels
+         config_global_ocean_depth_varname = refMidDepth
+         config_global_ocean_depth_conversion_factor = 1.00000000000000
+         config_global_ocean_temperature_file = none
+         config_global_ocean_salinity_file = none
+         config_global_ocean_tracer_nlat_dimname = none
+         config_global_ocean_tracer_nlon_dimname = none
+         config_global_ocean_tracer_ndepth_dimname = none
+         config_global_ocean_tracer_depth_conversion_factor = 1.00000000000000
+         config_global_ocean_tracer_vert_levels = -1
+         config_global_ocean_temperature_varname = none
+         config_global_ocean_salinity_varname = none
+         config_global_ocean_tracer_latlon_degrees = T
+         config_global_ocean_tracer_lat_varname = none
+         config_global_ocean_tracer_lon_varname = none
+         config_global_ocean_tracer_depth_varname = none
+         config_global_ocean_tracer_method = bilinear_interpolation
+         config_global_ocean_smooth_TS_iterations = 0
+         config_global_ocean_swData_file = none
+         config_global_ocean_swData_nlat_dimname = none
+         config_global_ocean_swData_nlon_dimname = none
+         config_global_ocean_swData_lat_varname = none
+         config_global_ocean_swData_lon_varname = none
+         config_global_ocean_swData_latlon_degrees = T
+         config_global_ocean_swData_method = bilinear_interpolation
+         config_global_ocean_chlorophyll_varname = none
+         config_global_ocean_zenithAngle_varname = none
+         config_global_ocean_clearSky_varname = none
+         config_global_ocean_piston_velocity = 0.500000000000000E-04
+         config_global_ocean_interior_restore_rate = 0.00000000000000
+         config_global_ocean_topography_source = latlon_file
+         config_global_ocean_topography_file = none
+         config_global_ocean_topography_nlat_dimname = none
+         config_global_ocean_topography_nlon_dimname = none
+         config_global_ocean_topography_latlon_degrees = T
+         config_global_ocean_topography_lat_varname = none
+         config_global_ocean_topography_lon_varname = none
+         config_global_ocean_topography_varname = none
+         config_global_ocean_topography_has_ocean_frac = F
+         config_global_ocean_topography_ocean_frac_varname = none
+         config_global_ocean_topography_method = bilinear_interpolation
+         config_global_ocean_fill_bathymetry_holes = T
+         config_global_ocean_topography_smooth_iterations = 0
+         config_global_ocean_topography_smooth_weight = 0.900000000000000
+         config_global_ocean_deepen_critical_passages = T
+         config_global_ocean_depress_by_land_ice = F
+         config_global_ocean_land_ice_topo_file = none
+         config_global_ocean_land_ice_topo_nlat_dimname = none
+         config_global_ocean_land_ice_topo_nlon_dimname = none
+         config_global_ocean_land_ice_topo_latlon_degrees = T
+         config_global_ocean_land_ice_topo_lat_varname = none
+         config_global_ocean_land_ice_topo_lon_varname = none
+         config_global_ocean_land_ice_topo_thickness_varname = none
+         config_global_ocean_land_ice_topo_draft_varname = none
+         config_global_ocean_land_ice_topo_ice_frac_varname = none
+         config_global_ocean_land_ice_topo_grounded_frac_varname = none
+         config_global_ocean_use_constant_land_ice_cavity_temperature = F
+         config_global_ocean_constant_land_ice_cavity_temperature = -1.80000000000000
+         config_global_ocean_cull_inland_seas = T
+         config_global_ocean_windstress_file = none
+         config_global_ocean_windstress_nlat_dimname = none
+         config_global_ocean_windstress_nlon_dimname = none
+         config_global_ocean_windstress_latlon_degrees = T
+         config_global_ocean_windstress_lat_varname = none
+         config_global_ocean_windstress_lon_varname = none
+         config_global_ocean_windstress_zonal_varname = none
+         config_global_ocean_windstress_meridional_varname = none
+         config_global_ocean_windstress_method = bilinear_interpolation
+         config_global_ocean_windstress_conversion_factor = 1.00000000000000
+         config_global_ocean_ecosys_file = unknown
+         config_global_ocean_ecosys_forcing_file = unknown
+         config_global_ocean_ecosys_nlat_dimname = none
+         config_global_ocean_ecosys_nlon_dimname = none
+         config_global_ocean_ecosys_ndepth_dimname = none
+         config_global_ocean_ecosys_depth_conversion_factor = 1.00000000000000
+         config_global_ocean_ecosys_vert_levels = -1
+         config_global_ocean_ecosys_lat_varname = none
+         config_global_ocean_ecosys_lon_varname = none
+         config_global_ocean_ecosys_depth_varname = none
+         config_global_ocean_ecosys_latlon_degrees = T
+         config_global_ocean_ecosys_method = bilinear_interpolation
+         config_global_ocean_ecosys_forcing_time_dimname = none
+         config_global_ocean_smooth_ecosys_iterations = 0
+ 
+ *** Encountered an issue while attempting to read namelist record cvmix_WSwSBF
+     The following values will be used for variables in this record:
+ 
+         config_cvmix_WSwSBF_vert_levels = 100
+         config_cvmix_WSwSBF_surface_temperature = 15.0000000000000
+         config_cvmix_WSwSBF_surface_salinity = 35.0000000000000
+         config_cvmix_WSwSBF_surface_restoring_temperature = 15.0000000000000
+         config_cvmix_WSwSBF_surface_restoring_salinity = 35.0000000000000
+         config_cvmix_WSwSBF_temperature_piston_velocity = 0.400000000000000E-05
+         config_cvmix_WSwSBF_salinity_piston_velocity = 0.400000000000000E-05
+         config_cvmix_WSwSBF_sensible_heat_flux = 0.00000000000000
+         config_cvmix_WSwSBF_latent_heat_flux = 0.00000000000000
+         config_cvmix_WSwSBF_shortwave_heat_flux = 0.00000000000000
+         config_cvmix_WSwSBF_rain_flux = 0.00000000000000
+         config_cvmix_WSwSBF_evaporation_flux = 0.00000000000000
+         config_cvmix_WSwSBF_interior_temperature_restoring_rate = 0.100000000000000E-05
+         config_cvmix_WSwSBF_interior_salinity_restoring_rate = 0.100000000000000E-05
+         config_cvmix_WSwSBF_temperature_gradient = 0.100000000000000E-01
+         config_cvmix_WSwSBF_salinity_gradient = 0.00000000000000
+         config_cvmix_WSwSBF_temperature_gradient_mixed_layer = 0.00000000000000
+         config_cvmix_WSwSBF_salinity_gradient_mixed_layer = 0.00000000000000
+         config_cvmix_WSwSBF_mixed_layer_depth_temperature = 0.00000000000000
+         config_cvmix_WSwSBF_mixed_layer_depth_salinity = 0.00000000000000
+         config_cvmix_WSwSBF_mixed_layer_temperature_change = 0.00000000000000
+         config_cvmix_WSwSBF_mixed_layer_salinity_change = 0.00000000000000
+         config_cvmix_WSwSBF_vertical_grid = uniform
+         config_cvmix_WSwSBF_bottom_depth = 400.000000000000
+         config_cvmix_WSwSBF_max_windstress = 0.100000000000000
+         config_cvmix_WSwSBF_coriolis_parameter = 0.100000000000000E-03
+ 
+ *** Encountered an issue while attempting to read namelist record iso
+     The following values will be used for variables in this record:
+ 
+         config_iso_vert_levels = 100
+         config_iso_main_channel_depth = 4000.00000000000
+         config_iso_north_wall_lat = -50.0000000000000
+         config_iso_south_wall_lat = -70.0000000000000
+         config_iso_ridge_flag = T
+         config_iso_ridge_center_lon = 180.000000000000
+         config_iso_ridge_height = 2000.00000000000
+         config_iso_ridge_width = 2000000.00000000
+         config_iso_plateau_flag = T
+         config_iso_plateau_center_lon = 300.000000000000
+         config_iso_plateau_center_lat = -58.0000000000000
+         config_iso_plateau_height = 2000.00000000000
+         config_iso_plateau_radius = 200000.000000000
+         config_iso_plateau_slope_width = 1000000.00000000
+         config_iso_shelf_flag = T
+         config_iso_shelf_depth = 500.000000000000
+         config_iso_shelf_width = 120000.000000000
+         config_iso_cont_slope_flag = T
+         config_iso_max_cont_slope = 0.100000000000000E-01
+         config_iso_embayment_flag = T
+         config_iso_embayment_center_lon = 60.0000000000000
+         config_iso_embayment_center_lat = -71.0000000000000
+         config_iso_embayment_radius = 500000.000000000
+         config_iso_embayment_depth = 2000.00000000000
+         config_iso_depression_flag = T
+         config_iso_depression_center_lon = 60.0000000000000
+         config_iso_depression_south_lat = -72.0000000000000
+         config_iso_depression_north_lat = -65.0000000000000
+         config_iso_depression_width = 480000.000000000
+         config_iso_depression_depth = 800.000000000000
+         config_iso_salinity = 35.0000000000000
+         config_iso_wind_stress_max = 0.100000000000000E-01
+         config_iso_acc_wind = 0.200000000000000
+         config_iso_asf_wind = -0.500000000000000E-01
+         config_iso_wind_trans = -65.0000000000000
+         config_iso_heat_flux_south = -5.00000000000000
+         config_iso_heat_flux_middle = 10.0000000000000
+         config_iso_heat_flux_north = -5.00000000000000
+         config_iso_heat_flux_lat_ss = -70.0000000000000
+         config_iso_heat_flux_lat_sm = -65.0000000000000
+         config_iso_heat_flux_lat_mn = -53.0000000000000
+         config_iso_region1_center_lon = 60.0000000000000
+         config_iso_region1_center_lat = -75.0000000000000
+         config_iso_region2_center_lon = 150.000000000000
+         config_iso_region2_center_lat = -71.0000000000000
+         config_iso_region3_center_lon = 240.000000000000
+         config_iso_region3_center_lat = -71.0000000000000
+         config_iso_region4_center_lon = 330.000000000000
+         config_iso_region4_center_lat = -71.0000000000000
+         config_iso_heat_flux_region1_flag = F
+         config_iso_heat_flux_region1 = -5.00000000000000
+         config_iso_heat_flux_region1_radius = 300000.000000000
+         config_iso_heat_flux_region2_flag = F
+         config_iso_heat_flux_region2 = -5.00000000000000
+         config_iso_heat_flux_region2_radius = 240000.000000000
+         config_iso_surface_temperature_piston_velocity = 0.580000000000000E-04
+         config_iso_initial_temp_t1 = 3.50000000000000
+         config_iso_initial_temp_t2 = 4.00000000000000
+         config_iso_initial_temp_h0 = 1200.00000000000
+         config_iso_initial_temp_h1 = 500.000000000000
+         config_iso_initial_temp_mt = 0.750000000000000E-04
+         config_iso_initial_temp_latS = -75.0000000000000
+         config_iso_initial_temp_latN = -50.0000000000000
+         config_iso_temperature_sponge_t1 = 10.0000000000000
+         config_iso_temperature_sponge_h1 = 1000.00000000000
+         config_iso_temperature_sponge_l1 = 120000.000000000
+         config_iso_temperature_sponge_tau1 = 10.0000000000000
+         config_iso_temperature_restore_region1_flag = T
+         config_iso_temperature_restore_t1 = -1.00000000000000
+         config_iso_temperature_restore_lcx1 = 600000.000000000
+         config_iso_temperature_restore_lcy1 = 600000.000000000
+         config_iso_temperature_restore_region2_flag = T
+         config_iso_temperature_restore_t2 = -1.00000000000000
+         config_iso_temperature_restore_lcx2 = 600000.000000000
+         config_iso_temperature_restore_lcy2 = 250000.000000000
+         config_iso_temperature_restore_region3_flag = T
+         config_iso_temperature_restore_t3 = -1.00000000000000
+         config_iso_temperature_restore_lcx3 = 600000.000000000
+         config_iso_temperature_restore_lcy3 = 250000.000000000
+         config_iso_temperature_restore_region4_flag = T
+         config_iso_temperature_restore_t4 = -1.00000000000000
+         config_iso_temperature_restore_lcx4 = 600000.000000000
+         config_iso_temperature_restore_lcy4 = 250000.000000000
+ 
+ *** Encountered an issue while attempting to read namelist record soma
+     The following values will be used for variables in this record:
+ 
+         config_soma_vert_levels = 100
+         config_soma_domain_width = 1250000.00000000
+         config_soma_center_latitude = 35.0000000000000
+         config_soma_center_longitude = 0.00000000000000
+         config_soma_phi = 0.100000000000000
+         config_soma_bottom_depth = 2500.00000000000
+         config_soma_shelf_width = -0.400000000000000
+         config_soma_shelf_depth = 100.000000000000
+         config_soma_ref_density = 1000.00000000000
+         config_soma_density_difference = 4.00000000000000
+         config_soma_thermocline_depth = 300.000000000000
+         config_soma_density_difference_linear = 0.500000000000000E-01
+         config_soma_surface_temperature = 20.0000000000000
+         config_soma_surface_salinity = 33.0000000000000
+         config_soma_use_surface_temp_restoring = F
+         config_soma_surface_temp_restoring_at_center_latitude = 7.50000000000000
+         config_soma_surface_temp_restoring_latitude_gradient = 0.500000000000000
+         config_soma_restoring_temp_piston_vel = 0.100000000000000E-04
+ 
+ *** Encountered an issue while attempting to read namelist record ziso
+     The following values will be used for variables in this record:
+ 
+         config_ziso_vert_levels = 100
+         config_ziso_add_easterly_wind_stress_ASF = F
+         config_ziso_wind_transition_position = 800000.000000000
+         config_ziso_antarctic_shelf_front_width = 600000.000000000
+         config_ziso_wind_stress_shelf_front_max = -0.500000000000000E-01
+         config_ziso_use_slopping_bathymetry = F
+         config_ziso_meridional_extent = 2000000.00000000
+         config_ziso_zonal_extent = 1000000.00000000
+         config_ziso_bottom_depth = 2500.00000000000
+         config_ziso_shelf_depth = 500.000000000000
+         config_ziso_slope_half_width = 100000.000000000
+         config_ziso_slope_center_position = 500000.000000000
+         config_ziso_reference_coriolis = -0.100000000000000E-03
+         config_ziso_coriolis_gradient = 0.00000000000000
+         config_ziso_wind_stress_max = 0.200000000000000
+         config_ziso_mean_restoring_temp = 3.00000000000000
+         config_ziso_restoring_temp_dev_ta = 2.00000000000000
+         config_ziso_restoring_temp_dev_tb = 2.00000000000000
+         config_ziso_restoring_temp_tau = 30.0000000000000
+         config_ziso_restoring_temp_piston_vel = 0.190000000000000E-04
+         config_ziso_restoring_temp_ze = 1250.00000000000
+         config_ziso_restoring_sponge_l = 80000.0000000000
+         config_ziso_initial_temp_t1 = 6.00000000000000
+         config_ziso_initial_temp_t2 = 3.60000000000000
+         config_ziso_initial_temp_h1 = 300.000000000000
+         config_ziso_initial_temp_mt = 0.750000000000000E-04
+         config_ziso_frazil_enable = F
+         config_ziso_frazil_temperature_anomaly = -3.00000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record sub_ice_shelf_2D
+     The following values will be used for variables in this record:
+ 
+         config_sub_ice_shelf_2D_vert_levels = 20
+         config_sub_ice_shelf_2D_bottom_depth = 2000.00000000000
+         config_sub_ice_shelf_2D_cavity_thickness = 25.0000000000000
+         config_sub_ice_shelf_2D_slope_height = 500.000000000000
+         config_sub_ice_shelf_2D_edge_width = 15000.0000000000
+         config_sub_ice_shelf_2D_y1 = 30000.0000000000
+         config_sub_ice_shelf_2D_y2 = 60000.0000000000
+         config_sub_ice_shelf_2D_temperature = 1.00000000000000
+         config_sub_ice_shelf_2D_surface_salinity = 34.5000000000000
+         config_sub_ice_shelf_2D_bottom_salinity = 34.7000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record periodic_planar
+     The following values will be used for variables in this record:
+ 
+         config_periodic_planar_vert_levels = 100
+         config_periodic_planar_bottom_depth = 2500.00000000000
+         config_periodic_planar_velocity_strength = 1.00000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record ecosys_column
+     The following values will be used for variables in this record:
+ 
+         config_ecosys_column_vert_levels = 100
+         config_ecosys_column_vertical_grid = 100layerE3SMv1
+         config_ecosys_column_TS_filename = unknown
+         config_ecosys_column_ecosys_filename = unknown
+         config_ecosys_column_bottom_depth = 6000.00000000000
+ 
+ *** Encountered an issue while attempting to read namelist record sea_mount
+     The following values will be used for variables in this record:
+ 
+         config_sea_mount_vert_levels = 10
+         config_sea_mount_layer_type = sigma
+         config_sea_mount_stratification_type = exponential
+         config_sea_mount_density_coef_linear = 1024.00000000000
+         config_sea_mount_density_coef_exp = 1028.00000000000
+         config_sea_mount_density_gradient_linear = 0.100000000000000
+         config_sea_mount_density_gradient_exp = 3.00000000000000
+         config_sea_mount_density_depth_linear = 4500.00000000000
+         config_sea_mount_density_depth_exp = 500.000000000000
+         config_sea_mount_density_ref = 1028.00000000000
+         config_sea_mount_density_Tref = 5.00000000000000
+         config_sea_mount_density_alpha = 0.200000000000000
+         config_sea_mount_bottom_depth = 5000.00000000000
+         config_sea_mount_height = 4500.00000000000
+         config_sea_mount_radius = 10000.0000000000
+         config_sea_mount_width = 40000.0000000000
+         config_sea_mount_salinity = 35.0000000000000
+         config_sea_mount_coriolis_parameter = -0.100000000000000E-03
+ 
+ *** Encountered an issue while attempting to read namelist record isomip
+     The following values will be used for variables in this record:
+ 
+         config_isomip_vert_levels = 30
+         config_isomip_vertical_level_distribution = constant
+         config_isomip_bottom_depth = -900.000000000000
+         config_isomip_temperature = -1.90000000000000
+         config_isomip_salinity = 34.4000000000000
+         config_isomip_restoring_temperature = -1.90000000000000
+         config_isomip_temperature_piston_velocity = 0.120000000000000E-04
+         config_isomip_restoring_salinity = 34.4000000000000
+         config_isomip_salinity_piston_velocity = 0.120000000000000E-04
+         config_isomip_coriolis_parameter = -0.140000000000000E-03
+         config_isomip_southern_boundary = 0.00000000000000
+         config_isomip_northern_boundary = 1000000.00000000
+         config_isomip_western_boundary = 0.00000000000000
+         config_isomip_eastern_boundary = 500000.000000000
+         config_isomip_y1 = 0.00000000000000
+         config_isomip_z1 = -700.000000000000
+         config_isomip_ice_fraction1 = 1.00000000000000
+         config_isomip_y2 = 400000.000000000
+         config_isomip_z2 = -200.000000000000
+         config_isomip_ice_fraction2 = 1.00000000000000
+         config_isomip_y3 = 1000000.00000000
+         config_isomip_z3 = -200.000000000000
+         config_isomip_ice_fraction3 = 1.00000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record isomip_plus
+     The following values will be used for variables in this record:
+ 
+         config_isomip_plus_vert_levels = 36
+         config_isomip_plus_vertical_level_distribution = constant
+         config_isomip_plus_max_bottom_depth = -720.000000000000
+         config_isomip_plus_minimum_levels = 3
+         config_isomip_plus_min_column_thickness = 10.0000000000000
+         config_isomip_plus_min_ocean_fraction = 0.500000000000000
+         config_isomip_plus_topography_file = input_geometry_processed.nc
+         config_isomip_plus_init_top_temp = -1.90000000000000
+         config_isomip_plus_init_bot_temp = -1.90000000000000
+         config_isomip_plus_init_top_sal = 33.8000000000000
+         config_isomip_plus_init_bot_sal = 34.5000000000000
+         config_isomip_plus_restore_top_temp = -1.90000000000000
+         config_isomip_plus_restore_bot_temp = 1.00000000000000
+         config_isomip_plus_restore_top_sal = 33.8000000000000
+         config_isomip_plus_restore_bot_sal = 34.7000000000000
+         config_isomip_plus_restore_rate = 10.0000000000000
+         config_isomip_plus_restore_evap_rate = 200.000000000000
+         config_isomip_plus_restore_xMin = 790000.000000000
+         config_isomip_plus_restore_xMax = 800000.000000000
+         config_isomip_plus_coriolis_parameter = -0.141000000000000E-03
+         config_isomip_plus_effective_density = 1026.00000000000
+ 
+ *** Encountered an issue while attempting to read namelist record hurricane
+     The following values will be used for variables in this record:
+ 
+         config_hurricane_vert_levels = 3
+         config_hurricane_min_depth = 10.0000000000000
+         config_hurricane_max_depth = 60.0000000000000
+         config_hurricane_gaussian_hump_amplitude = 1.00000000000000
+         config_hurricane_use_gaussian_hump = F
+         config_hurricane_gaussian_lon_center = 286.000000000000
+         config_hurricane_gaussian_lat_center = 38.0000000000000
+         config_hurricane_gaussian_width = 1.00000000000000
+         config_hurricane_gaussian_amplitude = 1.00000000000000
+         config_hurricane_gaussian_slr_amp = 0.00000000000000
+         config_hurricane_land_z_limit = -2.00000000000000
+         config_hurricane_marsh_z_limit = 2.00000000000000
+         config_hurricane_land_drag = 0.100000000000000
+         config_hurricane_marsh_drag = 0.500000000000000E-01
+         config_hurricane_channel_drag = 0.200000000000000E-01
+         config_hurricane_sea_level_rise_adjustment = 0.00000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record tidal_boundary
+     The following values will be used for variables in this record:
+ 
+         config_tidal_boundary_vert_levels = 100
+         config_tidal_boundary_min_vert_levels = 10
+         config_tidal_boundary_layer_type = zstar
+         config_tidal_boundary_right_bottom_depth = 10.0000000000000
+         config_tidal_start_dry = F
+         config_tidal_boundary_use_distances = T
+         config_tidal_boundary_left_value = 0.00000000000000
+         config_tidal_boundary_right_value = 25000.0000000000
+         config_tidal_boundary_left_bottom_depth = 10.0000000000000
+         config_tidal_boundary_salinity = 35.0000000000000
+         config_tidal_boundary_domain_temperature = 20.0000000000000
+         config_tidal_boundary_plug_temperature = 20.0000000000000
+         config_tidal_boundary_plug_width_frac = 0.100000000000000
+         config_tidal_forcing_left_Cd_or_n = 0.100000000000000E-02
+         config_tidal_forcing_right_Cd_or_n = 0.100000000000000E-02
+         config_use_idealized_transect = F
+         config_idealized_transect_Lshore = 0.600000000000000
+         config_idealized_transect_Sshore = 0.100000000000000E-02
+         config_idealized_transect_Lcoast = 0.300000000000000
+         config_idealized_transect_Scoast = 0.100000000000000E-02
+         config_idealized_transect_Lmarsh = 0.100000000000000
+         config_idealized_transect_Smarsh = 0.00000000000000
+         config_idealized_transect_roughness = 0.250000000000000E-01
+         config_idealized_transect_roughness_marsh = 0.750000000000000E-01
+         config_idealized_vegetation_diameter = 0.500000000000000E-01
+         config_idealized_vegetation_height = 0.200000000000000
+         config_idealized_vegetation_density = 1000.00000000000
+ 
+ *** Encountered an issue while attempting to read namelist record cosine_bell
+     The following values will be used for variables in this record:
+ 
+         config_cosine_bell_temperature = 15.0000000000000
+         config_cosine_bell_salinity = 35.0000000000000
+         config_cosine_bell_lat_center = 0.00000000000000
+         config_cosine_bell_lon_center = 3.14159200000000
+         config_cosine_bell_psi0 = 1.00000000000000
+         config_cosine_bell_radius = 2123666.66700000
+         config_cosine_bell_vel_pd = 24.0000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record mixed_layer_eddy
+     The following values will be used for variables in this record:
+ 
+         config_mixed_layer_eddy_vert_levels = 60
+         config_mixed_layer_eddy_bottom_depth = 300.000000000000
+         config_mixed_layer_eddy_mixed_layer_depth = 200.000000000000
+         config_mixed_layer_eddy_base_temperature = 16.0000000000000
+         config_mixed_layer_eddy_temperature_stratification_mixed_layer = 0.100000000000000E-03
+         config_mixed_layer_eddy_temperature_stratification_interior = 0.100000000000000E-01
+         config_mixed_layer_eddy_temperature_horizontal_gradient = 0.200000000000000E-04
+         config_mixed_layer_eddy_temperature_front_width = 10000.0000000000
+         config_mixed_layer_eddy_temperature_perturbation_magnitude = 0.100000000000000E-04
+         config_mixed_layer_eddy_salinity = 35.0000000000000
+         config_mixed_layer_eddy_two_fronts = F
+         config_mixed_layer_eddy_restoring_width = 5000.00000000000
+         config_mixed_layer_eddy_restoring_tau = 5.00000000000000
+         config_mixed_layer_eddy_heat_flux = 0.00000000000000
+         config_mixed_layer_eddy_evaporation_flux = 0.00000000000000
+         config_mixed_layer_eddy_wind_stress_zonal = 0.00000000000000
+         config_mixed_layer_eddy_wind_stress_meridional = 0.00000000000000
+         config_mixed_layer_eddy_coriolis_parameter = 0.100000000000000E-03
+ 
+ *** Encountered an issue while attempting to read namelist record test_sht
+     The following values will be used for variables in this record:
+ 
+         config_test_sht_function_option = 1
+         config_test_sht_cosine_bell_lat_center = 0.00000000000000
+         config_test_sht_cosine_bell_lon_center = 3.14159200000000
+         config_test_sht_cosine_bell_psi0 = 1.00000000000000
+         config_test_sht_cosine_bell_radius = 2123666.66700000
+         config_test_sht_function3_cell_width_equator = 30.0000000000000
+         config_test_sht_function3_cell_width_pole = 120.000000000000
+         config_test_sht_function3_lat_transition_start = 1.00000000000000
+         config_test_sht_function3_lat_transition_width = 10.0000000000000
+         config_test_sht_n_iterations = 10
+ 
+ *** Encountered an issue while attempting to read namelist record parabolic_bowl
+     The following values will be used for variables in this record:
+ 
+         config_parabolic_bowl_vert_levels = 3
+         config_parabolic_bowl_Coriolis_parameter = 0.103000000000000E-03
+         config_parabolic_bowl_eta0 = 2.00000000000000
+         config_parabolic_bowl_b0 = 50.0000000000000
+         config_parabolic_bowl_omega = 0.145000000000000E-03
+         config_parabolic_bowl_gravity = 9.81000000000000
+         config_parabolic_bowl_adjust_domain_center = T
+         config_parabolic_bowl_subgrid_refinement_level = 3
+         config_parabolic_bowl_subgrid_edge_bathymetry_max_pixel = T
+         config_parabolic_bowl_subgrid_table_levels = 10
+         config_parabolic_bowl_subgrid_use_thin_layer = F
+ 
+ *** Encountered an issue while attempting to read namelist record buttermilk_bay
+     The following values will be used for variables in this record:
+ 
+         config_Buttermilk_bay_vert_levels = 1
+         config_Buttermilk_bay_adjust_domain = T
+         config_Buttermilk_bay_subgrid_refinement_level = 3
+         config_Buttermilk_bay_subgrid_edge_bathymetry_max_pixel = T
+         config_Buttermilk_bay_subgrid_table_levels = 10
+         config_Buttermilk_bay_subgrid_use_thin_layer = F
+         config_Buttermilk_bay_topography_source = xy_file
+         config_Buttermilk_bay_topography_file = none
+         config_Buttermilk_bay_topography_latlon_degrees = F
+         config_Buttermilk_bay_topography_nlat_dimname = y
+         config_Buttermilk_bay_topography_nlon_dimname = x
+         config_Buttermilk_bay_topography_lat_varname = y
+         config_Buttermilk_bay_topography_lon_varname = x
+         config_Buttermilk_bay_topography_varname = Band1
+ 
+ *** Encountered an issue while attempting to read namelist record partial_cells
+     The following values will be used for variables in this record:
+ 
+         config_alter_ICs_for_pcs = F
+         config_pc_alteration_type = full_cell
+         config_min_pc_fraction = 0.100000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record init_setup
+     The following values will be used for variables in this record:
+ 
+         config_init_configuration = none
+         config_expand_sphere = F
+         config_realistic_coriolis_parameter = F
+         config_write_cull_cell_mask = T
+         config_vertical_grid = uniform
+ 
+ *** Encountered an issue while attempting to read namelist record CVTgenerator
+     The following values will be used for variables in this record:
+ 
+         config_1dCVTgenerator_stretch1 = 1.07700000000000
+         config_1dCVTgenerator_stretch2 = 1.02750000000000
+         config_1dCVTgenerator_dzSeed = 1.20000000000000
+ 
+ *** Encountered an issue while attempting to read namelist record init_vertical_grid
+     The following values will be used for variables in this record:
+ 
+         config_init_vertical_grid_type = z-star
+ 
+ *** Encountered an issue while attempting to read namelist record constrain_Haney_number
+     The following values will be used for variables in this record:
+ 
+         config_rx1_outer_iter_count = 20
+         config_rx1_inner_iter_count = 10
+         config_rx1_init_inner_weight = 0.100000000000000
+         config_rx1_max = 5.00000000000000
+         config_rx1_horiz_smooth_weight = 1.00000000000000
+         config_rx1_vert_smooth_weight = 1.00000000000000
+         config_rx1_slope_weight = 0.100000000000000
+         config_rx1_zstar_weight = 1.00000000000000
+         config_rx1_horiz_smooth_open_ocean_cells = 20
+         config_rx1_min_levels = 3
+         config_rx1_min_layer_thickness = 1.00000000000000
+ 
+ 
+   **** Summary of ocean packages ****
+       timeVaryingAtmosphericForcingPKGActive = OFF
+       timeVaryingLandIceForcingPKGActive = OFF
+       variableShortwaveActive = OFF
+       splitTimeIntegratorActive = ON
+       splitAB2TimeIntegratorActive = ON
+       semiImplicitTimePKGActive = OFF
+       thicknessFilterActive = OFF
+       windStressBulkPKGActive = ON
+       variableBottomDragPKGActive = OFF
+       thicknessBulkPKGActive = ON
+       landIcePressurePKGActive = OFF
+       landIceFluxesPKGActive = OFF
+       landIceCouplingPKGActive = OFF
+       dataLandIceFluxesPKGActive = OFF
+       frazilIceActive = ON
+       tidalForcingActive = OFF
+       vegetationDragPKGActive = OFF
+       forwardModeActive = ON
+       analysisModeActive = OFF
+       initModeActive = OFF
+       cullCellsActive = OFF
+       tracerBudgetActive = ON
+       gmActive = ON
+       submesoActive = ON
+       tidalPotentialForcingPKGActive = OFF
+       topographicWaveDragPKGActive = ON
+       gotmPKGActive = OFF
+       verticalRemapPKGActive = OFF
+       activeWavePKGActive = OFF
+       subgridWetDryPKGActive = OFF
+       activeTracersPKGActive = ON
+       activeTracersBulkRestoringPKGActive = OFF
+       activeTracersSurfaceRestoringPKGActive = OFF
+       activeTracersInteriorRestoringPKGActive = OFF
+       activeTracersExponentialDecayPKGActive = OFF
+       activeTracersIdealAgePKGActive = OFF
+       activeTracersTTDPKGActive = OFF
+       debugTracersPKGActive = ON
+       debugTracersBulkRestoringPKGActive = OFF
+       debugTracersSurfaceRestoringPKGActive = OFF
+       debugTracersInteriorRestoringPKGActive = OFF
+       debugTracersExponentialDecayPKGActive = OFF
+       debugTracersIdealAgePKGActive = OFF
+       debugTracersTTDPKGActive = OFF
+       ecosysTracersPKGActive = OFF
+       ecosysTracersBulkRestoringPKGActive = OFF
+       ecosysTracersSurfaceRestoringPKGActive = OFF
+       ecosysTracersInteriorRestoringPKGActive = OFF
+       ecosysTracersExponentialDecayPKGActive = OFF
+       ecosysTracersIdealAgePKGActive = OFF
+       ecosysTracersTTDPKGActive = OFF
+       DMSTracersPKGActive = OFF
+       DMSTracersBulkRestoringPKGActive = OFF
+       DMSTracersSurfaceRestoringPKGActive = OFF
+       DMSTracersInteriorRestoringPKGActive = OFF
+       DMSTracersExponentialDecayPKGActive = OFF
+       DMSTracersIdealAgePKGActive = OFF
+       DMSTracersTTDPKGActive = OFF
+       MacroMoleculesTracersPKGActive = OFF
+       MacroMoleculesTracersBulkRestoringPKGActive = OFF
+       MacroMoleculesTracersSurfaceRestoringPKGActive = OFF
+       MacroMoleculesTracersInteriorRestoringPKGActive = OFF
+       MacroMoleculesTracersExponentialDecayPKGActive = OFF
+       MacroMoleculesTracersIdealAgePKGActive = OFF
+       MacroMoleculesTracersTTDPKGActive = OFF
+       idealAgeTracersPKGActive = OFF
+       idealAgeTracersBulkRestoringPKGActive = OFF
+       idealAgeTracersSurfaceRestoringPKGActive = OFF
+       idealAgeTracersInteriorRestoringPKGActive = OFF
+       idealAgeTracersExponentialDecayPKGActive = OFF
+       idealAgeTracersIdealAgePKGActive = OFF
+       idealAgeTracersTTDPKGActive = OFF
+       CFCTracersPKGActive = OFF
+       CFCTracersBulkRestoringPKGActive = OFF
+       CFCTracersSurfaceRestoringPKGActive = OFF
+       CFCTracersInteriorRestoringPKGActive = OFF
+       CFCTracersExponentialDecayPKGActive = OFF
+       CFCTracersIdealAgePKGActive = OFF
+       CFCTracersTTDPKGActive = OFF
+       globalStatsAMPKGActive = OFF
+       surfaceAreaWeightedAveragesAMPKGActive = OFF
+       waterMassCensusAMPKGActive = OFF
+       layerVolumeWeightedAverageAMPKGActive = OFF
+       zonalMeanAMPKGActive = OFF
+       okuboWeissAMPKGActive = OFF
+       meridionalHeatTransportAMPKGActive = OFF
+       testComputeIntervalAMPKGActive = OFF
+       highFrequencyOutputAMPKGActive = OFF
+       timeFiltersAMPKGActive = OFF
+       lagrPartTrackAMPKGActive = OFF
+       eliassenPalmAMPKGActive = OFF
+       mixedLayerDepthsAMPKGActive = ON
+       regionalStatsDailyAMPKGActive = OFF
+       regionalStatsWeeklyAMPKGActive = OFF
+       regionalStatsMonthlyAMPKGActive = OFF
+       regionalStatsCustomAMPKGActive = OFF
+       timeSeriesStatsDailyAMPKGActive = OFF
+       timeSeriesStatsMonthlyAMPKGActive = OFF
+       timeSeriesStatsMonthlyMaxAMPKGActive = OFF
+       timeSeriesStatsMonthlyMinAMPKGActive = OFF
+       timeSeriesStatsClimatologyAMPKGActive = OFF
+       timeSeriesStatsCustomAMPKGActive = OFF
+       pointwiseStatsAMPKGActive = OFF
+       debugDiagnosticsAMPKGActive = OFF
+       rpnCalculatorAMPKGActive = OFF
+       transectTransportAMPKGActive = OFF
+       eddyProductVariablesAMPKGActive = OFF
+       mocStreamfunctionAMPKGActive = OFF
+       oceanHeatContentAMPKGActive = OFF
+       mixedLayerHeatBudgetAMPKGActive = OFF
+       sedimentFluxIndexAMPKGActive = OFF
+       sedimentTransportAMPKGActive = OFF
+       harmonicAnalysisAMPKGActive = OFF
+       conservationCheckAMPKGActive = OFF
+       landIceInitActive = OFF
+       criticalPassagesActive = OFF
+   ***********************************
+ 
+ Reading streams configuration from file streams.ocean
+ Found mesh stream with filename template init.nc
+ Using default io_type for mesh stream
+  ** Attempting to bootstrap MPAS framework using stream: mesh
+ Bootstrapping framework with mesh fields from input file 'init.nc'
+  * Requested field ecosysTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV_3D is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV_ALT_CO2_3D is deactivated due to packages, or is a scratch variable.
+  * Requested field FESEDFLUX is deactivated due to packages, or is a scratch variable.
+  * Requested field dust_FLUX_IN is deactivated due to packages, or is a scratch variable.
+  * Requested field IRON_FLUX_IN is deactivated due to packages, or is a scratch variable.
+  * Requested field PAR_surface is deactivated due to packages, or is a scratch variable.
+  * Requested field windSpeedSquared10m is deactivated due to packages, or is a scratch variable.
+  * Requested field atmosphericCO2 is deactivated due to packages, or is a scratch variable.
+  * Requested field atmosphericCO2_ALT_CO2 is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV_ALT_CO2 is deactivated due to packages, or is a scratch variable.
+  * Requested field depositionFluxNO3 is deactivated due to packages, or is a scratch variable.
+  * Requested field depositionFluxNH4 is deactivated due to packages, or is a scratch variable.
+  * Requested field pocToSed is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxNO3 is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxPO4 is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxSiO3 is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxFe is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDOC is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDON is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDOP is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDIC is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxALK is deactivated due to packages, or is a scratch variable.
+  * Requested field CO2_gas_flux is deactivated due to packages, or is a scratch variable.
+  * Requested field CO2_alt_gas_flux is deactivated due to packages, or is a scratch variable.
+  * Requested field avgCO2_gas_flux is deactivated due to packages, or is a scratch variable.
+  * Requested field total_Chl is deactivated due to packages, or is a scratch variable.
+  * Requested field highFreqThickness is deactivated due to packages, or is a scratch variable.
+  * Requested field lowFreqDivergence is deactivated due to packages, or is a scratch variable.
+  * Requested field effectiveDensityInLandIce is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIcePressure is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFraction is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceDraft is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingFraction is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV_3D is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV_ALT_CO2_3D is deactivated due to packages, or is a scratch variable.
+  * Requested field FESEDFLUX is deactivated due to packages, or is a scratch variable.
+  * Requested field dust_FLUX_IN is deactivated due to packages, or is a scratch variable.
+  * Requested field IRON_FLUX_IN is deactivated due to packages, or is a scratch variable.
+  * Requested field PAR_surface is deactivated due to packages, or is a scratch variable.
+  * Requested field windSpeedSquared10m is deactivated due to packages, or is a scratch variable.
+  * Requested field atmosphericCO2 is deactivated due to packages, or is a scratch variable.
+  * Requested field atmosphericCO2_ALT_CO2 is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV is deactivated due to packages, or is a scratch variable.
+  * Requested field PH_PREV_ALT_CO2 is deactivated due to packages, or is a scratch variable.
+  * Requested field depositionFluxNO3 is deactivated due to packages, or is a scratch variable.
+  * Requested field depositionFluxNH4 is deactivated due to packages, or is a scratch variable.
+  * Requested field pocToSed is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxNO3 is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxPO4 is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxSiO3 is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxFe is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDOC is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDON is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDOP is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxDIC is deactivated due to packages, or is a scratch variable.
+  * Requested field riverFluxALK is deactivated due to packages, or is a scratch variable.
+  * Requested field CO2_gas_flux is deactivated due to packages, or is a scratch variable.
+  * Requested field CO2_alt_gas_flux is deactivated due to packages, or is a scratch variable.
+  * Requested field avgCO2_gas_flux is deactivated due to packages, or is a scratch variable.
+  * Requested field total_Chl is deactivated due to packages, or is a scratch variable.
+  * Requested field highFreqThickness is deactivated due to packages, or is a scratch variable.
+  * Requested field lowFreqDivergence is deactivated due to packages, or is a scratch variable.
+  * Requested field landIcePressure is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceDraft is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFraction is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingFraction is deactivated due to packages, or is a scratch variable.
+  * Requested field effectiveDensityInLandIce is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLandIceMass is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLandIceHeat is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmVertViscTopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmVertDiffTopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmTKETopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmKbTopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmEpsbTopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmDissTopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field gotmLengthTopOfCell is deactivated due to packages, or is a scratch variable.
+  * Requested field ssh_sal is deactivated due to packages, or is a scratch variable.
+  * Requested field atmosPressure is deactivated due to packages, or is a scratch variable.
+  * Requested field windSpeedU is deactivated due to packages, or is a scratch variable.
+  * Requested field windSpeedV is deactivated due to packages, or is a scratch variable.
+  * Requested field landIcePressureForcing is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFractionForcing is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingFractionForcing is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceDraftForcing is deactivated due to packages, or is a scratch variable.
+  * Requested field performConservationPrecompute is deactivated due to packages, or is a scratch variable.
+  * Requested field initialEnergy is deactivated due to packages, or is a scratch variable.
+  * Requested field initialMass is deactivated due to packages, or is a scratch variable.
+  * Requested field initialSalt is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLatentHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedSensibleHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLongWaveHeatFluxUp is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLongWaveHeatFluxDown is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedShortWaveHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedSeaIceHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedMeltingSnowHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedMeltingIceRunoffHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedRemovedIceRunoffHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedIcebergHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedFrazilHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLandIceHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLandIceFrazilHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedRainTemperatureFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedEvapTemperatureFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedSeaIceTemperatureFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedRiverRunoffTemperatureFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedIcebergTemperatureFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedRainFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedSnowFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedEvaporationFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedSeaIceFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedIceRunoffFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedIcebergFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedFrazilFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLandIceFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedLandIceFrazilFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedSeaIceSalinityFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedFrazilSalinityFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field initialCarbon is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedAbsoluteCarbonError is deactivated due to packages, or is a scratch variable.
+  * Requested field accumulatedRelativeCarbonError is deactivated due to packages, or is a scratch variable.
+ 
+Parsing run-time I/O configuration from streams.ocean ...
+ 
+ -----  found immutable stream "mesh" in streams.ocean  -----
+         filename template:  init.nc
+         filename interval:  none
+         direction:          input
+         reference time:     initial_time
+         record interval:    -
+         input alarm:        initial_only
+ 
+ -----  found immutable stream "input" in streams.ocean  -----
+         filename template:  init.nc
+         filename interval:  none
+         direction:          input
+         reference time:     initial_time
+         record interval:    -
+         input alarm:        initial_only
+ 
+ -----  found immutable stream "restart" in streams.ocean  -----
+         filename template:  restarts/restart.$Y-$M-$D_$h.$m.$s.nc
+         filename interval:  0020_00:00:00
+         clobber mode:       truncate
+         direction:          input, output
+         reference time:     0001-01-01_00:00:00
+         record interval:    -
+         input alarm:        initial_only
+         output alarm:       0020_00:00:00
+ 
+ -----  found stream "output" in streams.ocean  -----
+         filename template:  output.nc
+         filename interval:  01-00-00_00:00:00
+         clobber mode:       truncate
+         direction:          output
+         reference time:     0001-01-01_00:00:00
+         record interval:    -
+         real precision:     8 bytes
+         output alarm:       0010_00:00:00
+  * Requested field ecosysTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracers is deactivated due to packages, or is a scratch variable.
+ 
+ -----  found stream "forcing_data" in streams.ocean  -----
+         filename template:  forcing_data.nc
+         filename interval:  none
+         direction:          input
+         reference time:     initial_time
+         record interval:    -
+         input alarm:        initial_only
+  * Requested field landIceSurfaceTemperature is deactivated due to packages, or is a scratch variable.
+  * Requested field latentHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field sensibleHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field shortWaveHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracersPistonVelocity is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracersSurfaceRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracersInteriorRestoringRate is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracersInteriorRestoringValue is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracersExponentialDecayRate is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field CFCTracersIdealAgeMask is deactivated due to packages, or is a scratch variable.
+  * Requested field activeTracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field debugTracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field ecosysTracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field DMSTracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field MacroMoleculesTracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field idealAgeTracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field CFC11TracersTTDMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceInterfaceTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field avgLandIceBoundaryLayerTracers is deactivated due to packages, or is a scratch variable.
+  * Requested field avgLandIceTracerTransferVelocities is deactivated due to packages, or is a scratch variable.
+WARNING: Requested field windStressZonal already in stream forcing_data
+WARNING: Requested field windStressMeridional already in stream forcing_data
+  * Requested field bottomDrag is deactivated due to packages, or is a scratch variable.
+WARNING: Requested field seaIcePressure already in stream forcing_data
+WARNING: Requested field atmosphericPressure already in stream forcing_data
+  * Requested field latentHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field sensibleHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field longWaveHeatFluxUp is deactivated due to packages, or is a scratch variable.
+  * Requested field longWaveHeatFluxDown is deactivated due to packages, or is a scratch variable.
+  * Requested field seaIceHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field icebergHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field shortWaveHeatFlux is deactivated due to packages, or is a scratch variable.
+WARNING: Requested field evaporationFlux already in stream forcing_data
+  * Requested field seaIceSalinityFlux is deactivated due to packages, or is a scratch variable.
+WARNING: Requested field rainFlux already in stream forcing_data
+  * Requested field stokesDriftZonal is deactivated due to packages, or is a scratch variable.
+  * Requested field stokesDriftMeridional is deactivated due to packages, or is a scratch variable.
+  * Requested field stokesDriftSurfaceZonal is deactivated due to packages, or is a scratch variable.
+  * Requested field stokesDriftSurfaceMeridional is deactivated due to packages, or is a scratch variable.
+  * Requested field significantWaveHeight is deactivated due to packages, or is a scratch variable.
+  * Requested field peakWaveFrequency is deactivated due to packages, or is a scratch variable.
+  * Requested field peakWaveDirection is deactivated due to packages, or is a scratch variable.
+  * Requested field stokesDriftZonalWavenumber is deactivated due to packages, or is a scratch variable.
+  * Requested field stokesDriftMeridionalWavenumber is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFraction is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingFraction is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFloatingMask is deactivated due to packages, or is a scratch variable.
+  * Requested field landIcePressure is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceDraft is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceSurfaceTemperature is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFreshwaterFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceFreshwaterFluxTotal is deactivated due to packages, or is a scratch variable.
+  * Requested field landIceHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field heatFluxToLandIce is deactivated due to packages, or is a scratch variable.
+  * Requested field avgEffectiveDensityInLandIce is deactivated due to packages, or is a scratch variable.
+  * Requested field dataLandIceFreshwaterFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field dataLandIceHeatFlux is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalInputMask is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalBCValue is deactivated due to packages, or is a scratch variable.
+  * Requested field vegetationHeight is deactivated due to packages, or is a scratch variable.
+  * Requested field vegetationDiameter is deactivated due to packages, or is a scratch variable.
+  * Requested field vegetationDensity is deactivated due to packages, or is a scratch variable.
+  * Requested field vegetationMask is deactivated due to packages, or is a scratch variable.
+  * Requested field vegetationManning is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalLayerThicknessTendency is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentFrequency is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentAmplitude is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentLoveNumbers is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentNodalAmplitude is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentNodalPhase is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentAstronomical is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialConstituentType is deactivated due to packages, or is a scratch variable.
+  * Requested field tidalPotentialLatitudeFunction is deactivated due to packages, or is a scratch variable.
+  * Requested field sshSubcycleCurWithTides is deactivated due to packages, or is a scratch variable.
+  * Requested field sshSubcycleNewWithTides is deactivated due to packages, or is a scratch variable.
+  * Requested field coastalSmoothingFactor is deactivated due to packages, or is a scratch variable.
+ 
+ -----  found stream "mixedLayerDepthsOutput" in streams.ocean  -----
+         filename template:  analysis_members/mixedLayerDepths.$Y-$M-$D.nc
+         filename interval:  01-00-00_00:00:00
+         clobber mode:       truncate
+         direction:          output
+         reference time:     0001-01-01_00:00:00
+         record interval:    -
+         real precision:     8 bytes
+         output alarm:       none
+         package:            mixedLayerDepthsAMPKG
+ 
+ ----- done parsing run-time I/O from streams.ocean -----
+
+  ** Validating streams
+ 
+ 
+ Reading dimensions from input streams ...
+ 
+ ----- reading dimensions from stream 'input_init' using file mesh.nc
+        nCells = 7404
+        nEdges = 23130
+        nVertices = 15698
+        TWO = 2
+        maxEdges = 8
+        maxEdges2 = 16
+        vertexDegree = 3
+ 
+ ----- reading dimensions from stream 'mesh' using file init.nc
+        nCells = 7404
+        nEdges = 23130
+        nVertices = 15698
+        TWO = 2
+        maxEdges = 8
+        maxEdges2 = 16
+        vertexDegree = 3
+        nVertLevels = 16
+ 
+ ----- reading dimensions from stream 'input' using file init.nc
+        nCells = 7404
+        nEdges = 23130
+        nVertices = 15698
+        TWO = 2
+        maxEdges = 8
+        maxEdges2 = 16
+        vertexDegree = 3
+        nVertLevels = 16
+ 
+   *** unable to open input file restarts/restart.0001-01-01_00.00.00.nc for stream 'restart'
+ 
+   *** unable to open input file atmospheric_forcing.nc for stream 'atmospheric_forcing'
+ 
+   *** unable to open input file land_ice_forcing.nc for stream 'land_ice_forcing'
+ 
+   *** unable to open input file restarts/restart.AM.conservationCheck.0001-01-01_00.00.00.nc for stream 'conservationCheckRestart'
+ 
+ ----- reading dimensions from stream 'forcing_data' using file forcing_data.nc
+        nCells = 7404
+        nEdges *** not found in stream ***
+        nForcingGroupsMax *** not found in stream ***
+        nVertLevels *** not found in stream ***
+ 
+ ----- done reading dimensions from input streams -----
+ 
+ 
+ Processing decomposed dimensions ...
+WARNING: Dimension 'nParticles' was not defined, and cannot be decomposed.
+ 
+  ----- done processing decomposed dimensions -----
+ 
+ 
+ Assigning remaining dimensions from definitions in Registry.xml ...
+        nCellsP1 = 7405
+        nEdgesP1 = 23131
+        nVerticesP1 = 15699
+        bnds = 2
+        R3 = 3
+        FOUR = 4
+        FIVE = 5
+        SIX = 6
+        FIFTEEN = 15
+        TWENTYONE = 21
+        nVertLevelsP1 = 17
+        nPoints = 1
+        nPointGroups = 1
+        maxPointsInGroup = 1
+        nRegions = 1
+        nRegionGroups = 1
+        maxRegionsInGroup = 1
+        nTransects = 1
+        nTransectGroups = 1
+        maxTransectsInGroup = 1
+        maxEdgesInTransect = 1
+        nForcingGroupsMax = 4
+        maxTidalConstituents = 8
+        maxTidalConstituentsX2 = 16
+        nStokesDriftWavenumbers = 6
+        nSubgridTableLevels = -1 (config_subgrid_table_levels)
+        nSfcAreaWeightedAvgFields = 36
+        nOceanRegions = 7
+        nTemperatureBins = 32
+        nSalinityBins = 20
+        nTemperatureBinsP1 = 33
+        nSalinityBinsP1 = 21
+        nOceanRegionsTmpCensus = 7
+        nLayerVolWeightedAvgFields = 36
+        nOceanRegionsTmp = 7
+        nZonalMeanBins = 180 (config_AM_zonalMean_num_bins)
+        nZonalMeanBinsP1 = 181
+        nMerHeatTransBins = 180 (config_AM_meridionalHeatTransport_num_bins)
+        nMerHeatTransBinsP1 = 181
+        nBuoyancySurfaces = 1
+        nBuoyancyLayers = 45 (config_AM_eliassenPalm_nBuoyancyLayers)
+        nBuoyancyLayersP1 = 46
+        nMocStreamfunctionBins = 180 (config_AM_mocStreamfunction_num_bins)
+        nMocStreamfunctionBinsP1 = 181
+        nDepthTracerIC = -1 (config_global_ocean_tracer_vert_levels)
+        nDepthEcosysIC = -1 (config_global_ocean_ecosys_vert_levels)
+ 
+  ----- done assigning dimensions from Registry.xml -----
+ 
+ 
+  *****************************************************************************
+  MPI Task 0 has access to 1 threads
+  *****************************************************************************
+WARNING: Variable minLevelCell not in input file.
+WARNING: Variable xtime not in input file.
+WARNING: File init.nc does not contain a seekable xtime variable. Forcing a read of the first time record.
+WARNING: Variable minLevelCell not in input file.
+WARNING: Variable tracer1 not in input file.
+WARNING: Variable tracer2 not in input file.
+WARNING: Variable tracer3 not in input file.
+WARNING: Variable xtime not in input file.
+WARNING: File init.nc does not contain a seekable xtime variable. Forcing a read of the first time record.
+WARNING: Variable xtime not in input file.
+WARNING: File init.nc does not contain a seekable xtime variable. Forcing a read of the first time record.
+WARNING: Variable evaporationFlux not in input file.
+WARNING: Variable rainFlux not in input file.
+WARNING: Variable avgTemperatureSurfaceValue not in input file.
+WARNING: Variable avgSalinitySurfaceValue not in input file.
+WARNING: Variable avgSurfaceVelocityZonal not in input file.
+WARNING: Variable avgSurfaceVelocityMeridional not in input file.
+WARNING: Variable avgSSHGradientZonal not in input file.
+WARNING: Variable avgSSHGradientMeridional not in input file.
+WARNING: Variable surfaceStress not in input file.
+WARNING: Variable surfaceStressMagnitude not in input file.
+WARNING: Variable surfaceThicknessFlux not in input file.
+WARNING: Variable surfaceThicknessFluxRunoff not in input file.
+WARNING: Variable nForcingGroupCounter not in input file.
+WARNING: Variable forcingGroupNames not in input file.
+WARNING: Variable forcingGroupRestartTimes not in input file.
+WARNING: Variable seaIceEnergy not in input file.
+WARNING: Variable penetrativeTemperatureFlux not in input file.
+WARNING: Variable fractionAbsorbed not in input file.
+WARNING: Variable fractionAbsorbedRunoff not in input file.
+WARNING: Variable rainTemperatureFlux not in input file.
+WARNING: Variable evapTemperatureFlux not in input file.
+WARNING: Variable seaIceTemperatureFlux not in input file.
+WARNING: Variable icebergTemperatureFlux not in input file.
+WARNING: Variable totalFreshWaterTemperatureFlux not in input file.
+WARNING: Variable seaIceFreshWaterFlux not in input file.
+WARNING: Variable icebergFreshWaterFlux not in input file.
+WARNING: Variable riverRunoffFlux not in input file.
+WARNING: Variable removedRiverRunoffFlux not in input file.
+WARNING: Variable totalRemovedRiverRunoffFlux not in input file.
+WARNING: Variable iceRunoffFlux not in input file.
+WARNING: Variable removedIceRunoffFlux not in input file.
+WARNING: Variable totalRemovedIceRunoffFlux not in input file.
+WARNING: Variable snowFlux not in input file.
+WARNING: Variable iceFraction not in input file.
+WARNING: Variable windSpeed10m not in input file.
+WARNING: Variable langmuirNumber not in input file.
+WARNING: Variable nAccumulatedCoupled not in input file.
+WARNING: Variable avgTotalFreshWaterTemperatureFlux not in input file.
+WARNING: Variable avgLandIceFreshwaterFlux not in input file.
+WARNING: Variable avgLandIceHeatFlux not in input file.
+WARNING: Variable avgRemovedRiverRunoffFlux not in input file.
+WARNING: Variable avgRemovedIceRunoffFlux not in input file.
+WARNING: Variable avgRemovedIceRunoffHeatFlux not in input file.
+WARNING: Variable frazilLayerThicknessTendency not in input file.
+WARNING: Variable frazilTemperatureTendency not in input file.
+WARNING: Variable frazilSalinityTendency not in input file.
+WARNING: Variable frazilSurfacePressure not in input file.
+WARNING: Variable frazilIceFreshwaterFlux not in input file.
+WARNING: Variable tidalPotentialEta not in input file.
+WARNING: Variable xtime not in input file.
+WARNING: File forcing_data.nc does not contain a seekable xtime variable. Forcing a read of the first time record.
+  Vertical coordinate movement is: uniform_stretching
+ *******************************************************************************
+ The split explicit AB2 time integration is configured to use: 20 barotropic subcycles
+ *******************************************************************************
+  Pressure type is: Jacobian_from_TS
+  Implicit bottom drag type is: constant
+ Doing timestep 0001-01-01_02:00:00
+ Doing timestep 0001-01-01_04:00:00
+ Doing timestep 0001-01-01_06:00:00
+ Doing timestep 0001-01-01_08:00:00
+ Doing timestep 0001-01-01_10:00:00
+ Doing timestep 0001-01-01_12:00:00
+ Doing timestep 0001-01-01_14:00:00
+ Doing timestep 0001-01-01_16:00:00
+ Doing timestep 0001-01-01_18:00:00
+ Doing timestep 0001-01-01_20:00:00
+ Doing timestep 0001-01-01_22:00:00
+ Doing timestep 0001-01-02_00:00:00
+ Doing timestep 0001-01-02_02:00:00
+ Doing timestep 0001-01-02_04:00:00
+ Doing timestep 0001-01-02_06:00:00
+ Doing timestep 0001-01-02_08:00:00
+ Doing timestep 0001-01-02_10:00:00
+ Doing timestep 0001-01-02_12:00:00
+ Doing timestep 0001-01-02_14:00:00
+ Doing timestep 0001-01-02_16:00:00
+ Doing timestep 0001-01-02_18:00:00
+ Doing timestep 0001-01-02_20:00:00
+ Doing timestep 0001-01-02_22:00:00
+ Doing timestep 0001-01-03_00:00:00
+ Doing timestep 0001-01-03_02:00:00
+ Doing timestep 0001-01-03_04:00:00
+ Doing timestep 0001-01-03_06:00:00
+ Doing timestep 0001-01-03_08:00:00
+ Doing timestep 0001-01-03_10:00:00
+ Doing timestep 0001-01-03_12:00:00
+ Doing timestep 0001-01-03_14:00:00
+ Doing timestep 0001-01-03_16:00:00
+ Doing timestep 0001-01-03_18:00:00
+ Doing timestep 0001-01-03_20:00:00
+ Doing timestep 0001-01-03_22:00:00
+ Doing timestep 0001-01-04_00:00:00
+ Doing timestep 0001-01-04_02:00:00
+ Doing timestep 0001-01-04_04:00:00
+ Doing timestep 0001-01-04_06:00:00
+ Doing timestep 0001-01-04_08:00:00
+ Doing timestep 0001-01-04_10:00:00
+ Doing timestep 0001-01-04_12:00:00
+ Doing timestep 0001-01-04_14:00:00
+ Doing timestep 0001-01-04_16:00:00
+ Doing timestep 0001-01-04_18:00:00
+ Doing timestep 0001-01-04_20:00:00
+ Doing timestep 0001-01-04_22:00:00
+ Doing timestep 0001-01-05_00:00:00
+ Doing timestep 0001-01-05_02:00:00
+ Doing timestep 0001-01-05_04:00:00
+ Doing timestep 0001-01-05_06:00:00
+ Doing timestep 0001-01-05_08:00:00
+ Doing timestep 0001-01-05_10:00:00
+ Doing timestep 0001-01-05_12:00:00
+ Doing timestep 0001-01-05_14:00:00
+ Doing timestep 0001-01-05_16:00:00
+ Doing timestep 0001-01-05_18:00:00
+ Doing timestep 0001-01-05_20:00:00
+ Doing timestep 0001-01-05_22:00:00
+ Doing timestep 0001-01-06_00:00:00
+ Doing timestep 0001-01-06_02:00:00
+ Doing timestep 0001-01-06_04:00:00
+ Doing timestep 0001-01-06_06:00:00
+ Doing timestep 0001-01-06_08:00:00
+ Doing timestep 0001-01-06_10:00:00
+ Doing timestep 0001-01-06_12:00:00
+ Doing timestep 0001-01-06_14:00:00
+ Doing timestep 0001-01-06_16:00:00
+ Doing timestep 0001-01-06_18:00:00
+ Doing timestep 0001-01-06_20:00:00
+ Doing timestep 0001-01-06_22:00:00
+ Doing timestep 0001-01-07_00:00:00
+ Doing timestep 0001-01-07_02:00:00
+ Doing timestep 0001-01-07_04:00:00
+ Doing timestep 0001-01-07_06:00:00
+ Doing timestep 0001-01-07_08:00:00
+ Doing timestep 0001-01-07_10:00:00
+ Doing timestep 0001-01-07_12:00:00
+ Doing timestep 0001-01-07_14:00:00
+ Doing timestep 0001-01-07_16:00:00
+ Doing timestep 0001-01-07_18:00:00
+ Doing timestep 0001-01-07_20:00:00
+ Doing timestep 0001-01-07_22:00:00
+ Doing timestep 0001-01-08_00:00:00
+ Doing timestep 0001-01-08_02:00:00
+ Doing timestep 0001-01-08_04:00:00
+ Doing timestep 0001-01-08_06:00:00
+ Doing timestep 0001-01-08_08:00:00
+ Doing timestep 0001-01-08_10:00:00
+ Doing timestep 0001-01-08_12:00:00
+ Doing timestep 0001-01-08_14:00:00
+ Doing timestep 0001-01-08_16:00:00
+ Doing timestep 0001-01-08_18:00:00
+ Doing timestep 0001-01-08_20:00:00
+ Doing timestep 0001-01-08_22:00:00
+ Doing timestep 0001-01-09_00:00:00
+ Doing timestep 0001-01-09_02:00:00
+ Doing timestep 0001-01-09_04:00:00
+ Doing timestep 0001-01-09_06:00:00
+ Doing timestep 0001-01-09_08:00:00
+ Doing timestep 0001-01-09_10:00:00
+ Doing timestep 0001-01-09_12:00:00
+ Doing timestep 0001-01-09_14:00:00
+ Doing timestep 0001-01-09_16:00:00
+ Doing timestep 0001-01-09_18:00:00
+ Doing timestep 0001-01-09_20:00:00
+ Doing timestep 0001-01-09_22:00:00
+ Doing timestep 0001-01-10_00:00:00
+ Doing timestep 0001-01-10_02:00:00
+ Doing timestep 0001-01-10_04:00:00
+ Doing timestep 0001-01-10_06:00:00
+ Doing timestep 0001-01-10_08:00:00
+ Doing timestep 0001-01-10_10:00:00
+ Doing timestep 0001-01-10_12:00:00
+ Doing timestep 0001-01-10_14:00:00
+ Doing timestep 0001-01-10_16:00:00
+ Doing timestep 0001-01-10_18:00:00
+ Doing timestep 0001-01-10_20:00:00
+ Doing timestep 0001-01-10_22:00:00
+ Doing timestep 0001-01-11_00:00:00
+ 
+ 
+  Timer information:
+     Globals are computed across all threads and processors
+ 
+  Columns:
+     total time: Global max of accumulated time spent in timer
+     calls: Total number of times this timer was started / stopped.
+     min: Global min of time spent in a single start / stop
+     max: Global max of time spent in a single start / stop
+     avg: Global max of average time spent in a single start / stop
+     pct_tot: Percent of the timer at level 1
+     pct_par: Percent of the parent timer (one level up)
+     par_eff: Parallel efficiency, global average total time / global max total time
+ 
+ 
+    timer_name                                            total       calls        min            max            avg      pct_tot   pct_par     par_eff
+  1 total time                                          40.55132         1       40.55132       40.55132       40.55132   100.00       0.00       1.00
+  2  initialize                                          2.95966         1        2.95966        2.95966        2.95966     7.30       7.30       1.00
+  3   io_read                                            1.77514         2        0.58011        1.19502        0.88757     4.38      59.98       1.00
+  4    analysis_bootstrap                                0.00008         1        0.00008        0.00008        0.00008     0.00       0.00       1.00
+  5     init_read_mixedLayerDepths                       0.00002         1        0.00002        0.00002        0.00002     0.00      30.64       1.00
+  3   reset_io_alarms                                    0.00009         2        0.00001        0.00008        0.00005     0.00       0.00       1.00
+  3   diagnostic solve                                   0.01847         1        0.01847        0.01847        0.01847     0.05       0.62       1.00
+  4    equation of state                                 0.00239         3        0.00057        0.00124        0.00080     0.01      12.96       1.00
+  3   analysis_init                                      0.00019         1        0.00019        0.00019        0.00019     0.00       0.01       1.00
+  4    init_mixedLayerDepths                             0.00013         1        0.00013        0.00013        0.00013     0.00      68.14       1.00
+  3   SAL Init                                           0.00000         1        0.00000        0.00000        0.00000     0.00       0.00       1.00
+  2  analysis_compute_startup                            0.62418         1        0.62418        0.62418        0.62418     1.54       1.54       1.00
+  3   compute_startup_mixedLayerDepths                   0.00070         1        0.00070        0.00070        0.00070     0.00       0.11       1.00
+  2  io_shortwave                                        0.00067       121        0.00000        0.00003        0.00001     0.00       0.00       1.00
+  2  io_read                                             0.00122       120        0.00001        0.00003        0.00001     0.00       0.00       1.00
+  2  reset_io_alarms                                     0.01092       480        0.00000        0.00005        0.00002     0.03       0.03       1.00
+  2  analysis_precompute                                 0.00411       120        0.00003        0.00005        0.00003     0.01       0.01       1.00
+  3   precompute_mixedLayerDepths                        0.00013       120        0.00000        0.00000        0.00000     0.00       3.18       1.00
+  2  frazil                                              0.04386       120        0.00034        0.00109        0.00037     0.11       0.11       1.00
+  2  land_ice_build_arrays                               0.00006       120        0.00000        0.00000        0.00000     0.00       0.00       1.00
+  2  submesoscale eddy velocity compute                  0.21562       120        0.00176        0.00231        0.00180     0.53       0.53       1.00
+  2  gm bolus velocity                                   4.03197       120        0.03286        0.03604        0.03360     9.94       9.94       1.00
+  2  time integration                                   31.42010       120        0.25856        0.39126        0.26183    77.48      77.48       1.00
+  3   se timestep                                       31.41748       120        0.25854        0.39123        0.26181    77.48      99.99       1.00
+  4    se prep                                           0.15367       120        0.00125        0.00147        0.00128     0.38       0.49       1.00
+  4    se loop                                          24.22551       121        0.12925        0.21078        0.20021    59.74      77.11       1.00
+  5     se halo diag obd                                 0.00161       121        0.00001        0.00001        0.00001     0.00       0.01       1.00
+  5     se halo diag                                     0.00165       121        0.00001        0.00001        0.00001     0.00       0.01       1.00
+  5     se bcl vel                                       2.58672       121        0.01838        0.02280        0.02138     6.38      10.68       1.00
+  6      se bcl vel tend                                 1.50499       121        0.01201        0.01321        0.01244     3.71      58.18       1.00
+  7       ocn_tend_vel                                   1.36265       121        0.01094        0.01201        0.01126     3.36      90.54       1.00
+  8        bulk_ws                                       0.02625       121        0.00021        0.00032        0.00022     0.06       1.93       1.00
+  8        coriolis                                      0.32340       121        0.00245        0.00309        0.00267     0.80      23.73       1.00
+  8        vel vadv                                      0.06739       121        0.00054        0.00068        0.00056     0.17       4.95       1.00
+  8        pressure grad                                 0.32326       121        0.00261        0.00285        0.00267     0.80      23.72       1.00
+  8        vel hmix                                      0.26305       121        0.00211        0.00242        0.00217     0.65      19.30       1.00
+  9         vel del2                                     0.04200       121        0.00034        0.00040        0.00035     0.10      15.97       1.00
+  9         vel leith                                    0.04421       121        0.00036        0.00049        0.00037     0.11      16.81       1.00
+  9         vel del4                                     0.17656       121        0.00141        0.00166        0.00146     0.44      67.12       1.00
+  8        vel surface stress                            0.32496       121        0.00267        0.00282        0.00269     0.80      23.85       1.00
+  8        vel topographic wave drag                     0.01321       121        0.00011        0.00012        0.00011     0.03       0.97       1.00
+  6      bcl iters on linear Coriolis                    1.08082       241        0.00416        0.00536        0.00448     2.67      41.78       1.00
+  7       ocn_fuperp                                     0.71276       241        0.00292        0.00324        0.00296     1.76      65.95       1.00
+  7       se halo normalBaroclinicVelocity               0.00206       241        0.00000        0.00002        0.00001     0.01       0.19       1.00
+  6      se halo barotropicForcing                       0.00060       121        0.00000        0.00001        0.00000     0.00       0.02       1.00
+  5     se btr vel                                       5.09620       121        0.04176        0.04417        0.04212    12.57      21.04       1.00
+  6      btr vel se init                                 0.00355       121        0.00003        0.00006        0.00003     0.01       0.07       1.00
+  6      btr se subcycle loop                            4.92082       121        0.04042        0.04285        0.04067    12.13      96.56       1.00
+  7       se halo subcycle                               0.00992      4840        0.00000        0.00001        0.00000     0.02       0.20       1.00
+  6      btr se norm                                     0.00075       121        0.00001        0.00001        0.00001     0.00       0.01       1.00
+  6      se halo F and btr vel                           0.00094       121        0.00001        0.00001        0.00001     0.00       0.02       1.00
+  6      btr se ssh verif                                0.16815       121        0.00126        0.00160        0.00139     0.41       3.30       1.00
+  5     se thick tend                                    0.20018       121        0.00162        0.00185        0.00165     0.49       0.83       1.00
+  6      thick vert trans vel top                        0.10697       121        0.00086        0.00105        0.00088     0.26      53.44       1.00
+  6      ocn_tend_thick                                  0.08549       121        0.00070        0.00074        0.00071     0.21      42.71       1.00
+  7       bulk_thick                                     0.00252       121        0.00002        0.00002        0.00002     0.01       2.94       1.00
+  7       thick hadv                                     0.05501       121        0.00045        0.00048        0.00045     0.14      64.34       1.00
+  7       thick vadv                                     0.00774       121        0.00006        0.00007        0.00006     0.02       9.05       1.00
+  7       thick surface flux                             0.01137       121        0.00009        0.00010        0.00009     0.03      13.31       1.00
+  7       frazil thickness tendency                      0.00820       121        0.00007        0.00008        0.00007     0.02       9.60       1.00
+  5     se halo thickness                                0.00103       121        0.00001        0.00001        0.00001     0.00       0.00       1.00
+  5     se tracer tend                                  13.83111       121        0.05733        0.12014        0.11431    34.11      57.09       1.00
+  6      ocn_tend_tracer                                13.83071       121        0.05732        0.12013        0.11430    34.11     100.00       1.00
+  7       tracer adv                                     3.81403       241        0.01346        0.01920        0.01583     9.41      27.58       1.00
+  7       tracer hmix                                    9.16063       241        0.03420        0.04506        0.03801    22.59      66.23       1.00
+  8        tracer del2                                   0.53554       241        0.00198        0.00282        0.00222     1.32       5.85       1.00
+  8        tracer del4                                   1.18806       241        0.00450        0.00565        0.00493     2.93      12.97       1.00
+  8        tracer redi                                   7.43626       241        0.02770        0.03702        0.03086    18.34      81.18       1.00
+  7       surface_tracer_flux                            0.05412       241        0.00020        0.00042        0.00022     0.13       0.39       1.00
+  7       surface_tracer_runoff_flux                     0.07015       241        0.00026        0.00049        0.00029     0.17       0.51       1.00
+  7       non-local flux from KPP                        0.38332       241        0.00126        0.00226        0.00159     0.95       2.77       1.00
+  8        KPP input fields                              0.23203       241        0.00094        0.00108        0.00096     0.57      60.53       1.00
+  9         equation of state                            0.16680       241        0.00068        0.00078        0.00069     0.41      71.89       1.00
+  8        non-local flux                                0.06907       241        0.00025        0.00047        0.00029     0.17      18.02       1.00
+  7       tracer frazil                                  0.01605       241        0.00000        0.00017        0.00007     0.04       0.12       1.00
+  5     se halo tracers                                  0.00788       121        0.00004        0.00008        0.00007     0.02       0.03       1.00
+  5     se loop fini                                     2.49823       121        0.00954        0.02395        0.02065     6.16      10.31       1.00
+  6      diagnostic solve                                0.00877         1        0.00877        0.00877        0.00877     0.02       0.35       1.00
+  7       equation of state                              0.00158         3        0.00041        0.00075        0.00053     0.00      18.07       1.00
+  6      ocn_tend_thick                                  0.08504       119        0.00070        0.00090        0.00071     0.21       3.40       1.00
+  7       bulk_thick                                     0.00257       119        0.00002        0.00004        0.00002     0.01       3.02       1.00
+  7       thick hadv                                     0.05479       119        0.00045        0.00061        0.00046     0.14      64.42       1.00
+  7       thick vadv                                     0.00758       119        0.00006        0.00008        0.00006     0.02       8.92       1.00
+  7       thick surface flux                             0.01136       119        0.00009        0.00011        0.00010     0.03      13.36       1.00
+  7       frazil thickness tendency                      0.00809       119        0.00007        0.00009        0.00007     0.02       9.51       1.00
+  6      se halo thickness                               0.00113       119        0.00001        0.00001        0.00001     0.00       0.05       1.00
+  4    se implicit vert mix                              5.15463       120        0.04239        0.04950        0.04296    12.71      16.41       1.00
+  5     diagnostic solve                                 1.29991       120        0.01062        0.01225        0.01083     3.21      25.22       1.00
+  6      equation of state                               0.19265       360        0.00041        0.00084        0.00054     0.48      14.82       1.00
+  5     vmix imp                                         3.84582       120        0.03166        0.03718        0.03205     9.48      74.61       1.00
+  6      vmix coefs                                      2.93825       120        0.02414        0.02890        0.02449     7.25      76.40       1.00
+  7       cvmix cell loop                                2.82176       120        0.02319        0.02786        0.02351     6.96      96.04       1.00
+  7       tracer redi coef                               0.01215       120        0.00010        0.00011        0.00010     0.03       0.41       1.00
+  6      CVMix avg                                       0.03438       120        0.00028        0.00040        0.00029     0.08       0.89       1.00
+  6      vmix solve momentum                             0.46437       120        0.00383        0.00433        0.00387     1.15      12.07       1.00
+  6      vmix solve tracers                              0.40753       120        0.00337        0.00370        0.00340     1.00      10.60       1.00
+  7       vmix tracers tend imp loop                     0.33801       240        0.00138        0.00161        0.00141     0.83      82.94       1.00
+  5     se vmix halos                                    0.00661       120        0.00005        0.00009        0.00006     0.02       0.13       1.00
+  6      se vmix halos normalVelFld                      0.00107       120        0.00001        0.00001        0.00001     0.00      16.22       1.00
+  4    se fini                                           1.88287       120        0.01532        0.01892        0.01569     4.64       5.99       1.00
+  5     diagnostic solve                                 1.29621       120        0.01050        0.01178        0.01080     3.20      68.84       1.00
+  6      equation of state                               0.19314       360        0.00041        0.00090        0.00054     0.48      14.90       1.00
+  5     se final mpas reconstruct                        0.12246       120        0.00098        0.00113        0.00102     0.30       6.50       1.00
+  5     reconstruct eddy vecs                            0.43128       120        0.00352        0.00654        0.00359     1.06      22.91       1.00
+  2  analysis_compute                                    0.06782       120        0.00053        0.00068        0.00057     0.17       0.17       1.00
+  3   compute_mixedLayerDepths                           0.05949       120        0.00046        0.00061        0.00050     0.15      87.72       1.00
+  2  analysis_restart                                    0.00331       120        0.00003        0.00005        0.00003     0.01       0.01       1.00
+  3   restart_mixedLayerDepths                           0.00016       120        0.00000        0.00001        0.00000     0.00       4.90       1.00
+  2  analysis_write                                      0.02002       120        0.00016        0.00024        0.00017     0.05       0.05       1.00
+  3   write_mixedLayerDepths                             0.00993       120        0.00008        0.00012        0.00008     0.02      49.63       1.00
+  3   reset_alarm_mixedLayerDepths                       0.00611       120        0.00005        0.00008        0.00005     0.02      30.55       1.00
+  2  io_write                                            0.61939       360        0.00000        0.61193        0.00172     1.53       1.53       1.00
+  2  analysis_finalize                                   0.00006         1        0.00006        0.00006        0.00006     0.00       0.00       1.00
+  3   finalize_mixedLayerDepths                          0.00001         1        0.00001        0.00001        0.00001     0.00      10.27       1.00
+ 
+ -----------------------------------------
+ Total log messages printed:
+    Output messages =                 1418
+    Warning messages =                  69
+    Error messages =                     0
+    Critical error messages =            0
+ -----------------------------------------
+ Logging complete.  Closing file at 2024/05/20 14:15:38
