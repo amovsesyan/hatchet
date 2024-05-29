@@ -1,0 +1,622 @@
+
+************ PROCESS   2752 (  2752) ************
+
+$Id: gptl.c,v 1.157 2011-03-28 20:55:18 rosinski Exp $
+GPTL was built without threading
+HAVE_MPI was true
+  HAVE_COMM_F2C was true
+  ENABLE_PMPI was false
+HAVE_PAPI was false
+Underlying timing routine was MPI_Wtime.
+Per-call utr overhead est: 3.3959e-08 sec.
+If overhead stats are printed, roughly half the estimated number is
+embedded in the wallclock stats for each timer.
+Print method was most_frequent.
+If a '%_of' field is present, it is w.r.t. the first timer for thread 0.
+If a 'e6_per_sec' field is present, it is in millions of PAPI counts per sec.
+
+A '*' in column 1 below means the timer had multiple parents, though the
+values printed are for all calls.
+Further down the listing may be more detailed information about multiple
+parents. Look for 'Multiple parent info'
+
+Stats for thread 0:
+                                                                        On  Called Recurse   Wallclock          max          min     UTR Overhead 
+  "CPL:INIT"                                                             -       1    -     114.475899   114.475899   114.475899         0.000000 
+    "CPL:cime_pre_init1"                                                 -       1    -      12.428313    12.428313    12.428313         0.000000 
+      "CPL:mpi_init"                                                     -       1    -      11.751300    11.751300    11.751300         0.000000 
+    "CPL:ESMF_Initialize"                                                -       1    -       0.000000     0.000000     0.000000         0.000000 
+    "CPL:cime_pre_init2"                                                 -       1    -       1.669656     1.669656     1.669656         0.000000 
+      "CPL:seq_infodata_init"                                            -       1    -       0.083981     0.083981     0.083981         0.000000 
+      "CPL:seq_timemgr_clockInit"                                        -       1    -       1.310166     1.310166     1.310166         0.000000 
+    "CPL:cime_init"                                                      -       1    -     100.377907   100.377907   100.377907         0.000000 
+      "CPL:init_comps"                                                   -       1    -      93.789146    93.789146    93.789146         0.000000 
+        "CPL:comp_init_pre_all"                                          -       1    -       0.000132     0.000132     0.000132         0.000000 
+        "CPL:comp_init_cc_atm"                                           -       1    -       0.000003     0.000003     0.000003         0.000000 
+        "CPL:comp_init_cc_lnd"                                           -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "CPL:comp_init_cc_rof"                                           -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "CPL:comp_init_cc_ocn"                                           -       1    -      86.714348    86.714348    86.714348         0.000000 
+          "o_i:comp_init"                                                -       1    -       7.366914     7.366914     7.366914         0.000000 
+            "o_i:mpaso_init1"                                            -       1    -       3.364951     3.364951     3.364951         0.000000 
+*             "o_i:PIO:openfile"                                         -       8    -       0.402842     0.113012     0.000756         0.000001 
+              "o_i:PIO:get_att_id_text"                                  -       4    -       0.000115     0.000074     0.000011         0.000000 
+*               "o_i:PIO:PIOc_get_att_tc"                                -       5    -       0.000098     0.000040     0.000010         0.000000 
+              "o_i:PIO:get_att_id_double"                                -       1    -       0.000021     0.000021     0.000021         0.000000 
+              "o_i:PIO:closefile"                                        -       5    -       0.004218     0.003507     0.000118         0.000000 
+                "o_i:PIO:PIOc_closefile"                                 -       5    -       0.004168     0.003463     0.000117         0.000000 
+            "o_i:mpaso_init2"                                            -       1    -       3.958153     3.958153     3.958153         0.000000 
+              "o_i:io_read"                                              -       2    -       3.803782     3.537052     0.266730         0.000000 
+*               "o_i:PIO:initdecomp_dof"                                 -      23    -       0.288721     0.083731     0.001270         0.000002 
+                  "o_i:PIO:PIOc_initdecomp"                              -      23    -       0.288587     0.083679     0.001269         0.000002 
+                    "o_i:PIO:box_rearrange_create"                       -      23    -       0.286821     0.083139     0.001261         0.000002 
+*               "o_i:PIO:read_darray_1d_int"                             -      14    -       0.173397     0.065559     0.001704         0.000001 
+*               "o_i:PIO:read_darray_2d_int"                             -      16    -       0.636695     0.139144     0.004694         0.000001 
+                "o_i:PIO:get_vara_1d_text"                               -      25    -       0.025831     0.015612     0.000151         0.000002 
+*                 "o_i:PIO:PIOc_get_vars_tc"                             -      31    -       0.041264     0.016358     0.000088         0.000002 
+                "o_i:PIO:read_darray_1d_double"                          -      45    -       0.372170     0.068968     0.002048         0.000003 
+*                 "o_i:PIO:PIOc_read_darray"                             -      85    -       2.996966     0.347460     0.001702         0.000006 
+                    "o_i:PIO:read_darray_nc"                             -      85    -       2.579448     0.329694     0.001456         0.000006 
+                    "o_i:PIO:rearrange_io2comp"                          -      85    -       0.362339     0.043143     0.000085         0.000006 
+*                     "o_i:PIO:pio_swapm"                                -     154    -       0.504829     0.060154     0.000083         0.000010 
+                "o_i:PIO:read_darray_2d_double"                          -      10    -       1.815173     0.347472     0.015101         0.000001 
+                "o_i:PIO:get_vara_1d_double"                             -       2    -       0.000563     0.000324     0.000239         0.000000 
+                "o_i:analysis_bootstrap"                                 -       1    -       0.228554     0.228554     0.228554         0.000000 
+                  "o_i:init_read_globalStats"                            -       1    -       0.000005     0.000005     0.000005         0.000000 
+                  "o_i:init_read_layerVolumeWeightedAverage"             -       1    -       0.000004     0.000004     0.000004         0.000000 
+                  "o_i:init_read_meridionalHeatTransport"                -       1    -       0.000003     0.000003     0.000003         0.000000 
+                  "o_i:init_read_surfaceAreaWeightedAverages"            -       1    -       0.000003     0.000003     0.000003         0.000000 
+                  "o_i:init_read_highFrequencyOutput"                    -       1    -       0.000003     0.000003     0.000003         0.000000 
+                  "o_i:init_read_mixedLayerDepths"                       -       1    -       0.000002     0.000002     0.000002         0.000000 
+                  "o_i:init_read_mixedLayerHeatBudget"                   -       1    -       0.000002     0.000002     0.000002         0.000000 
+                  "o_i:init_read_timeSeriesStatsMonthly"                 -       1    -       0.116726     0.116726     0.116726         0.000000 
+                  "o_i:init_read_timeSeriesStatsMonthlyMin"              -       1    -       0.057290     0.057290     0.057290         0.000000 
+                  "o_i:init_read_timeSeriesStatsMonthlyMax"              -       1    -       0.053893     0.053893     0.053893         0.000000 
+                  "o_i:init_read_mocStreamfunction"                      -       1    -       0.000003     0.000003     0.000003         0.000000 
+                  "o_i:init_read_oceanHeatContent"                       -       1    -       0.000002     0.000002     0.000002         0.000000 
+                  "o_i:init_read_conservationCheck"                      -       1    -       0.000555     0.000555     0.000555         0.000000 
+                "o_i:PIO:get_vara_1d_int"                                -       2    -       0.016885     0.016668     0.000218         0.000000 
+                "o_i:PIO:get_vara_2d_int"                                -       2    -       0.000867     0.000674     0.000193         0.000000 
+              "o_i:reset_io_alarms"                                      -       2    -       0.000299     0.000286     0.000013         0.000000 
+              "o_i:diagnostic solve"                                     -       1    -       0.016109     0.016109     0.016109         0.000000 
+                "o_i:equation of state"                                  -       3    -       0.002428     0.001373     0.000485         0.000000 
+              "o_i:analysis_init"                                        -       1    -       0.005232     0.005232     0.005232         0.000000 
+                "o_i:init_globalStats"                                   -       1    -       0.000032     0.000032     0.000032         0.000000 
+                "o_i:init_layerVolumeWeightedAverage"                    -       1    -       0.000236     0.000236     0.000236         0.000000 
+                "o_i:init_meridionalHeatTransport"                       -       1    -       0.001216     0.001216     0.001216         0.000000 
+                "o_i:init_surfaceAreaWeightedAverages"                   -       1    -       0.000581     0.000581     0.000581         0.000000 
+                "o_i:init_highFrequencyOutput"                           -       1    -       0.000012     0.000012     0.000012         0.000000 
+                "o_i:init_mixedLayerDepths"                              -       1    -       0.000215     0.000215     0.000215         0.000000 
+                "o_i:init_mixedLayerHeatBudget"                          -       1    -       0.000200     0.000200     0.000200         0.000000 
+                "o_i:init_timeSeriesStatsMonthly"                        -       1    -       0.000534     0.000534     0.000534         0.000000 
+                "o_i:init_timeSeriesStatsMonthlyMin"                     -       1    -       0.000607     0.000607     0.000607         0.000000 
+                "o_i:init_timeSeriesStatsMonthlyMax"                     -       1    -       0.000416     0.000416     0.000416         0.000000 
+                "o_i:init_mocStreamfunction"                             -       1    -       0.000385     0.000385     0.000385         0.000000 
+                "o_i:init_oceanHeatContent"                              -       1    -       0.000498     0.000498     0.000498         0.000000 
+                "o_i:init_conservationCheck"                             -       1    -       0.000220     0.000220     0.000220         0.000000 
+              "o_i:SAL Init"                                             -       1    -       0.000016     0.000016     0.000016         0.000000 
+            "o_i:mpaso_mct_init"                                         -       1    -       0.042230     0.042230     0.042230         0.000000 
+              "o_i:frazil"                                               -       1    -       0.000764     0.000764     0.000764         0.000000 
+              "o_i:land_ice_build_arrays"                                -       1    -       0.000001     0.000001     0.000001         0.000000 
+              "o_i:io_shortwave"                                         -       1    -       0.000008     0.000008     0.000008         0.000000 
+        "CPL:comp_init_cc_ice"                                           -       1    -       0.000002     0.000002     0.000002         0.000000 
+        "CPL:comp_init_cc_glc"                                           -       1    -       0.000006     0.000006     0.000006         0.000000 
+        "CPL:comp_init_cc_wav"                                           -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "CPL:comp_init_cc_esp"                                           -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "CPL:comp_init_cc_iac"                                           -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "CPL:comp_init_cx_all"                                           -       1    -       7.074629     7.074629     7.074629         0.000000 
+        "CPL:comp_list_all"                                              -       1    -       0.000004     0.000004     0.000004         0.000000 
+      "CPL:init_areacor"                                                 -       1    -       6.407967     6.407967     6.407967         0.000000 
+      "CPL:comp_init_cc_atm2"                                            -       1    -       0.000002     0.000002     0.000002         0.000000 
+      "CPL:init_readrestart"                                             -       1    -       0.000080     0.000080     0.000080         0.000000 
+  "CPL:cime_run_init"                                                    -       1    -       0.000227     0.000227     0.000227         0.000000 
+  "CPL:INIT_sync1_tprf"                                                  -       1    -       6.366513     6.366513     6.366513         0.000000 
+  "CPL:INIT_t_prf"                                                       -       1    -       0.138049     0.138049     0.138049         0.000000 
+  "CPL:INIT_sync2_tprf"                                                  -       1    -       0.001251     0.001251     0.001251         0.000000 
+  "CPL:RUN_LOOP_BSTART"                                                  -       1    -       0.000039     0.000039     0.000039         0.000000 
+  "CPL:RUN_LOOP"                                                         -  525600    -   142835.265625   126.057777     0.201232         0.035698 
+    "CPL:CLOCK_ADVANCE"                                                  -  525600    -      55.780739     0.000322     0.000087         0.035698 
+    "CPL:C2O_INITWAIT"                                                   -  525600    -   14870.435547    10.223046     0.003996         0.035698 
+    "CPL:COMM"                                                           - 1.1e+06    -     579.390442     0.459825     0.000096         0.071395 
+      "CPL:C2O"                                                          -  525600    -     500.210968     0.006188     0.000161         0.035698 
+        "CPL:c2o_ocnx2ocno"                                              -  525600    -     353.755157     0.006178     0.000134         0.035698 
+        "CPL:c2o_infoexch"                                               -  525600    -     145.726181     0.004333     0.000007         0.035698 
+      "CPL:O2CT"                                                         -  525600    -      78.622108     0.459824     0.000096         0.035698 
+        "CPL:o2c_ocno2ocnx"                                              -  525600    -      55.205696     0.002948     0.000084         0.035698 
+        "CPL:o2c_infoexch"                                               -  525600    -      22.384605     0.459732     0.000008         0.035698 
+    "CPL:OCN_RUN"                                                        -  525600    -   127313.742188   126.011299     0.195246         0.035698 
+      "o:analysis_compute_startup"                                       -  525600    -      22.139791     0.989702     0.000035         0.035698 
+        "o:compute_startup_globalStats"                                  -       1    -       0.006074     0.006074     0.006074         0.000000 
+        "o:compute_startup_layerVolumeWeightedAverage"                   -       1    -       0.068872     0.068872     0.068872         0.000000 
+        "o:compute_startup_meridionalHeatTransport"                      -       1    -       0.025633     0.025633     0.025633         0.000000 
+        "o:compute_startup_surfaceAreaWeightedAverages"                  -       1    -       0.001357     0.001357     0.001357         0.000000 
+        "o:compute_startup_mixedLayerDepths"                             -       1    -       0.000839     0.000839     0.000839         0.000000 
+        "o:compute_startup_mocStreamfunction"                            -       1    -       0.811153     0.811153     0.811153         0.000000 
+        "o:compute_startup_oceanHeatContent"                             -       1    -       0.000204     0.000204     0.000204         0.000000 
+        "o:compute_startup_conservationCheck"                            -       1    -       0.002910     0.002910     0.002910         0.000000 
+*       "o:PIO:createfile"                                               -    2917    -      45.674454     2.256782     0.004247         0.000198 
+          "o:PIO:PIOc_createfile"                                        -    2917    -      45.659245     2.256778     0.004240         0.000198 
+*       "o:PIO:put_att_id_double"                                        -  209928    -       3.941160     0.003562     0.000006         0.014258 
+*       "o:PIO:put_att_id_int"                                           -  107929    -       1.734906     0.002148     0.000006         0.007330 
+*       "o:PIO:put_vara_1d_text"                                         -   16681    -       1.906309     0.002763     0.000027         0.001133 
+*       "o:PIO:syncfile"                                                 -   15451    -     902.698425     7.320754     0.000026         0.001049 
+          "o:PIO:PIOc_sync"                                              -   15451    -     902.677246     7.320749     0.000025         0.001049 
+      "o:frazil"                                                         -  525600    -     352.327789     0.001323     0.000382         0.035698 
+      "o:land_ice_build_arrays"                                          -  525600    -       0.766752     0.000201     0.000000         0.035698 
+      "o:submesoscale eddy velocity compute"                             -  525600    -     491.804138     0.001693     0.000726         0.035698 
+      "o:gm bolus velocity"                                              -  525600    -    7549.386719   125.653954     0.012689         0.035698 
+      "o:io_shortwave"                                                   -  525600    -      14.930066     0.000234     0.000010         0.035698 
+      "o:analysis_precompute"                                            -  525600    -     258.545197     0.005030     0.000307         0.035698 
+        "o:precompute_layerVolumeWeightedAverage"                        -  262801    -       0.115291     0.000029     0.000000         0.017849 
+        "o:precompute_meridionalHeatTransport"                           -  262801    -       0.069464     0.000016     0.000000         0.017849 
+        "o:precompute_surfaceAreaWeightedAverages"                       -  262801    -       0.065291     0.000039     0.000000         0.017849 
+        "o:precompute_mixedLayerDepths"                                  -  525600    -       0.204737     0.000019     0.000000         0.035698 
+        "o:precompute_mixedLayerHeatBudget"                              -  262801    -       0.066376     0.000016     0.000000         0.017849 
+        "o:precompute_timeSeriesStatsMonthly"                            -  525600    -       0.137703     0.000018     0.000000         0.035698 
+        "o:precompute_timeSeriesStatsMonthlyMin"                         -  262801    -       0.069211     0.000020     0.000000         0.017849 
+        "o:precompute_timeSeriesStatsMonthlyMax"                         -  262801    -       0.055436     0.000014     0.000000         0.017849 
+        "o:precompute_mocStreamfunction"                                 -  262801    -       0.076528     0.000014     0.000000         0.017849 
+        "o:precompute_oceanHeatContent"                                  -  262801    -       0.064958     0.000025     0.000000         0.017849 
+        "o:precompute_conservationCheck"                                 -  525600    -       2.339911     0.004659     0.000002         0.035698 
+        "o:precompute_globalStats"                                       -   10950    -       0.005479     0.000053     0.000000         0.000744 
+        "o:precompute_highFrequencyOutput"                               -    2190    -       0.000630     0.000001     0.000000         0.000149 
+      "o:time integration"                                               -  525600    -   74098.335938     0.837497     0.133961         0.035698 
+        "o:se timestep"                                                  -  525600    -   74053.531250     0.837333     0.133890         0.035698 
+          "o:se prep"                                                    -  525600    -    1037.767822     0.002858     0.000799         0.035698 
+          "o:se loop"                                                    -  525600    -   48172.652344     0.647679     0.086169         0.035698 
+            "o:se halo diag obd"                                         -  525600    -     228.059799     0.006051     0.000046         0.035698 
+            "o:se halo diag"                                             -  525600    -    1345.816162     0.240604     0.001478         0.035698 
+            "o:se bcl vel"                                               -  525600    -   10216.942383     0.155938     0.016732         0.035698 
+              "o:se bcl vel tend"                                        -  525600    -    5383.163574     0.014595     0.007685         0.035698 
+                "o:ocn_tend_vel"                                         -  525600    -    4279.785645     0.012300     0.006692         0.035698 
+                  "o:bulk_ws"                                            -  525600    -      34.249908     0.000275     0.000056         0.035698 
+                  "o:coriolis"                                           -  525600    -    1440.876831     0.004727     0.001623         0.035698 
+                  "o:vel vadv"                                           -  525600    -     333.656616     0.003207     0.000348         0.035698 
+                  "o:pressure grad"                                      -  525600    -     922.020325     0.002545     0.001577         0.035698 
+                  "o:vel hmix"                                           -  525600    -     629.930054     0.001916     0.000970         0.035698 
+                    "o:vel del2"                                         -  525600    -     168.885666     0.000558     0.000238         0.035698 
+                    "o:vel del4"                                         -  525600    -     459.420471     0.001535     0.000714         0.035698 
+                  "o:vel surface stress"                                 -  525600    -     770.244568     0.002320     0.001344         0.035698 
+              "o:bcl iters on linear Coriolis"                           - 1.1e+06    -    4461.751953     0.090182     0.003067         0.071395 
+                "o:ocn_fuperp"                                           - 1.1e+06    -    2166.088379     0.003603     0.001790         0.071395 
+                "o:se halo normalBaroclinicVelocity"                     - 1.1e+06    -    1223.176270     0.087136     0.000437         0.071395 
+              "o:se halo barotropicForcing"                              -  525600    -     369.246338     0.014489     0.000029         0.035698 
+            "o:se btr vel"                                               -  525600    -    9258.895508     0.088984     0.015443         0.035698 
+              "o:btr vel se init"                                        -  525600    -       5.401783     0.000197     0.000007         0.035698 
+              "o:btr se subcycle loop"                                   -  525600    -    7945.828613     0.086411     0.013878         0.035698 
+                "o:se halo subcycle"                                     - 3.2e+07    -    1570.596069     0.071297     0.000022         2.141863 
+              "o:btr se norm"                                            -  525600    -       5.808159     0.000115     0.000010         0.035698 
+              "o:se halo F and btr vel"                                  -  525600    -      34.678886     0.004828     0.000040         0.035698 
+              "o:btr se ssh verif"                                       -  525600    -    1261.132690     0.003285     0.000990         0.035698 
+            "o:se thick tend"                                            -  525600    -     807.190918     0.002757     0.001249         0.035698 
+              "o:thick vert trans vel top"                               -  525600    -     510.905670     0.001894     0.000819         0.035698 
+*             "o:ocn_tend_thick"                                         - 1.1e+06    -     472.061676     0.000819     0.000350         0.071395 
+                "o:bulk_thick"                                           - 1.1e+06    -      14.366758     0.000212     0.000007         0.071395 
+                "o:thick hadv"                                           - 1.1e+06    -     263.910675     0.000548     0.000228         0.071395 
+                "o:thick vadv"                                           - 1.1e+06    -      21.908342     0.000220     0.000017         0.071395 
+                "o:thick surface flux"                                   - 1.1e+06    -      92.925041     0.000358     0.000051         0.071395 
+                "o:frazil thickness tendency"                            - 1.1e+06    -      70.905228     0.000262     0.000035         0.071395 
+*           "o:se halo thickness"                                        - 1.1e+06    -     662.009094     0.066161     0.000176         0.071395 
+            "o:se tracer tend"                                           -  525600    -   18685.394531     0.052457     0.031288         0.035698 
+              "o:ocn_tend_tracer"                                        -  525600    -   18682.160156     0.052449     0.031283         0.035698 
+                "o:bulk_activeTracers"                                   -  525600    -      66.426292     0.000353     0.000062         0.035698 
+                "o:tracer adv"                                           -  525600    -    7189.845215     0.017479     0.009754         0.035698 
+                "o:tracer hmix"                                          -  525600    -    9185.142578     0.030805     0.016439         0.035698 
+                  "o:tracer redi"                                        -  525600    -    9182.579102     0.030799     0.016435         0.035698 
+                "o:surface_tracer_flux"                                  -  525600    -      83.768875     0.000423     0.000122         0.035698 
+                "o:surface_tracer_runoff_flux"                           -  525600    -      74.272171     0.000455     0.000125         0.035698 
+                "o:short wave"                                           -  525600    -     236.076355     0.000712     0.000403         0.035698 
+                "o:non-local flux from KPP"                              -  525600    -     795.387146     0.002338     0.001328         0.035698 
+                  "o:KPP input fields"                                   -  525600    -     513.446838     0.001604     0.000871         0.035698 
+                  "o:non-local flux"                                     -  525600    -     107.567902     0.000521     0.000177         0.035698 
+                "o:tracer frazil"                                        -  525600    -      53.006542     0.000404     0.000060         0.035698 
+            "o:se halo tracers"                                          -  525600    -     748.922485     0.061674     0.000600         0.035698 
+            "o:se loop fini"                                             -  525600    -    6685.062012     0.040398     0.008230         0.035698 
+          "o:se implicit vert mix"                                       -  525600    -   14585.098633     0.171589     0.022707         0.035698 
+*           "o:diagnostic solve"                                         - 1.1e+06    -   15339.890625     0.021508     0.009683         0.071395 
+*             "o:equation of state"                                      - 3.7e+06    -    2817.787109     0.005280     0.000449         0.249884 
+            "o:vmix imp"                                                 -  525600    -    5297.309570     0.018088     0.008073         0.035698 
+              "o:vmix coefs"                                             -  525600    -    3636.937256     0.014708     0.005129         0.035698 
+                "o:cvmix cell loop"                                      -  525600    -    3359.293457     0.014016     0.004743         0.035698 
+                "o:tracer redi coef"                                     -  525600    -      30.026356     0.000260     0.000048         0.035698 
+              "o:CVMix avg"                                              -  525600    -      64.408951     0.000368     0.000092         0.035698 
+              "o:vmix solve momentum"                                    -  525600    -    1013.239258     0.002252     0.001799         0.035698 
+              "o:vmix solve tracers"                                     -  525600    -     570.433411     0.001674     0.000997         0.035698 
+                "o:vmix tracers tend imp loop"                           -  525600    -     423.885406     0.001195     0.000749         0.035698 
+            "o:se vmix halos"                                            -  525600    -     987.344604     0.085854     0.001049         0.035698 
+              "o:se vmix halos normalVelFld"                             -  525600    -     470.942291     0.036060     0.000422         0.035698 
+          "o:se fini"                                                    -  525600    -   10249.691406     0.028345     0.015308         0.035698 
+            "o:se final mpas reconstruct"                                -  525600    -     644.626526     0.002346     0.001044         0.035698 
+            "o:reconstruct eddy vecs"                                    -  525600    -    1644.548828     0.005383     0.002631         0.035698 
+      "o:analysis_compute"                                               -  525600    -   33208.566406    27.510111     0.015637         0.035698 
+        "o:compute_layerVolumeWeightedAverage"                           -  262801    -   11348.634766     0.253385     0.037990         0.017849 
+        "o:compute_meridionalHeatTransport"                              -  262801    -    6574.449707     0.117248     0.019402         0.017849 
+        "o:compute_surfaceAreaWeightedAverages"                          -  262801    -     232.181030     0.006155     0.000489         0.017849 
+        "o:compute_mixedLayerDepths"                                     -  525600    -     304.523865     0.001630     0.000228         0.035698 
+        "o:compute_mixedLayerHeatBudget"                                 -  262801    -     124.027885     0.002128     0.000182         0.017849 
+        "o:compute_timeSeriesStatsMonthly"                               -  525600    -    9950.428711     0.068607     0.011987         0.035698 
+        "o:compute_timeSeriesStatsMonthlyMin"                            -  262801    -     113.176064     0.000713     0.000311         0.017849 
+        "o:compute_timeSeriesStatsMonthlyMax"                            -  262801    -      87.728249     0.000564     0.000226         0.017849 
+        "o:compute_mocStreamfunction"                                    -  262801    -    2326.990479     1.125317     0.007493         0.017849 
+        "o:compute_oceanHeatContent"                                     -  262801    -      69.506279     0.000499     0.000209         0.017849 
+        "o:compute_conservationCheck"                                    -  525600    -    1708.907959    27.403025     0.001201         0.035698 
+        "o:compute_globalStats"                                          -   10950    -      76.829498     0.033093     0.003474         0.000744 
+        "o:compute_highFrequencyOutput"                                  -    2190    -       9.037904     0.004998     0.003868         0.000149 
+      "o:analysis_restart"                                               -  525600    -      30.894058     0.000261     0.000045         0.035698 
+        "o:restart_globalStats"                                          -  525600    -       0.415964     0.000038     0.000000         0.035698 
+        "o:restart_layerVolumeWeightedAverage"                           -  525600    -       0.323023     0.000039     0.000000         0.035698 
+        "o:restart_meridionalHeatTransport"                              -  525600    -       0.271230     0.000033     0.000000         0.035698 
+        "o:restart_surfaceAreaWeightedAverages"                          -  525600    -       0.455442     0.000059     0.000000         0.035698 
+        "o:restart_highFrequencyOutput"                                  -  525600    -       0.385377     0.000052     0.000000         0.035698 
+        "o:restart_mixedLayerDepths"                                     -  525600    -       0.500090     0.000043     0.000000         0.035698 
+        "o:restart_mixedLayerHeatBudget"                                 -  525600    -       0.445076     0.000036     0.000000         0.035698 
+        "o:restart_timeSeriesStatsMonthly"                               -  525600    -       0.545398     0.000042     0.000001         0.035698 
+        "o:restart_timeSeriesStatsMonthlyMin"                            -  525600    -       0.365300     0.000054     0.000001         0.035698 
+        "o:restart_timeSeriesStatsMonthlyMax"                            -  525600    -       0.328960     0.000051     0.000001         0.035698 
+        "o:restart_mocStreamfunction"                                    -  525600    -       0.370319     0.000041     0.000000         0.035698 
+        "o:restart_oceanHeatContent"                                     -  525600    -       0.299536     0.000048     0.000000         0.035698 
+        "o:restart_conservationCheck"                                    -  525600    -       1.007295     0.000180     0.000001         0.035698 
+      "o:analysis_write"                                                 -  525600    -    5449.096191     8.916031     0.007352         0.035698 
+        "o:write_globalStats"                                            -  525600    -     359.538422     0.478167     0.000210         0.035698 
+*         "o:PIO:put_att_id_text"                                        - 2.4e+06    -      41.388992     0.006233     0.000006         0.160971 
+*           "o:PIO:PIOc_put_att_tc"                                      - 3.0e+06    -      46.132008     0.006230     0.000004         0.205898 
+*             "o:PIO:write_total"                                        - 6.0e+06    -    1137.468750     7.320745     0.000004         0.407716 
+*               "o:PIO:flush_output_buffer"                              -  170574    -     814.704407     7.089252     0.000002         0.011585 
+                "o:PIO:flush_buffer"                                     -    5640    -     115.609901     1.088319     0.000646         0.000383 
+                  "o:PIO:PIOc_write_darray_multi"                        -    5640    -     115.503807     1.088294     0.000640         0.000383 
+                    "o:PIO:rearrange_comp2io"                            -    5640    -      66.122086     0.107755     0.000433         0.000383 
+*                     "o:PIO:pio_swapm"                                  -    5655    -      65.013214     0.107554     0.000234         0.000384 
+                    "o:PIO:write_darray_multi_par"                       -    5640    -      22.738586     0.047604     0.000033         0.000383 
+*         "o:PIO:put_var1_double"                                        - 2.7e+06    -     150.318634     0.006992     0.000025         0.182963 
+*           "o:PIO:PIOc_put_vars_tc"                                     - 2.8e+06    -     115.777969     0.005574     0.000018         0.192929 
+*         "o:PIO:createfile"                                             -    2917    -      45.674454     2.256782     0.004247         0.000198 
+            "o:PIO:PIOc_createfile"                                      -    2917    -      45.659245     2.256778     0.004240         0.000198 
+*         "o:PIO:put_att_id_double"                                      -  209928    -       3.941160     0.003562     0.000006         0.014258 
+*         "o:PIO:put_att_id_int"                                         -  107929    -       1.734906     0.002148     0.000006         0.007330 
+*         "o:PIO:put_vara_1d_text"                                       -   16681    -       1.906309     0.002763     0.000027         0.001133 
+*         "o:PIO:syncfile"                                               -   15451    -     902.698425     7.320754     0.000026         0.001049 
+            "o:PIO:PIOc_sync"                                            -   15451    -     902.677246     7.320749     0.000025         0.001049 
+*         "o:PIO:closefile"                                              -    2905    -      11.977174     0.531541     0.000575         0.000197 
+            "o:PIO:PIOc_closefile"                                       -    2905    -      11.967211     0.531537     0.000572         0.000197 
+              "o:PIO:PIOc_closefile_write_mode"                          -    2904    -      11.399746     0.531366     0.000642         0.000197 
+        "o:reset_alarm_globalStats"                                      -  525600    -     111.532211     0.000453     0.000181         0.035698 
+        "o:write_layerVolumeWeightedAverage"                             -  525600    -     188.973404     0.000618     0.000296         0.035698 
+        "o:reset_alarm_layerVolumeWeightedAverage"                       -  525600    -     174.382156     0.000599     0.000270         0.035698 
+        "o:write_meridionalHeatTransport"                                -  525600    -     201.149521     2.480711     0.000274         0.035698 
+*         "o:PIO:put_vara_1d_double"                                     -    1500    -       0.082080     0.000495     0.000024         0.000102 
+          "o:PIO:put_vara_2d_double"                                     -     360    -       0.038892     0.000475     0.000055         0.000024 
+        "o:reset_alarm_meridionalHeatTransport"                          -  525600    -     163.364182     0.000634     0.000259         0.035698 
+        "o:write_surfaceAreaWeightedAverages"                            -  525600    -     181.754257     0.000559     0.000301         0.035698 
+        "o:reset_alarm_surfaceAreaWeightedAverages"                      -  525600    -     173.441711     0.000547     0.000286         0.035698 
+        "o:write_highFrequencyOutput"                                    -  525600    -     185.172195     0.596874     0.000203         0.035698 
+*         "o:PIO:put_att_id_real"                                        -  343628    -       4.742676     0.004910     0.000006         0.023339 
+*         "o:PIO:write_darray_real"                                      -  107430    -      15.575355     0.004292     0.000008         0.007296 
+*           "o:PIO:PIOc_write_darray"                                    -  109620    -      15.795024     0.004283     0.000007         0.007445 
+        "o:reset_alarm_highFrequencyOutput"                              -  525600    -     106.925972     0.000361     0.000186         0.035698 
+        "o:write_mixedLayerDepths"                                       -  525600    -     130.766083     0.000777     0.000223         0.035698 
+        "o:reset_alarm_mixedLayerDepths"                                 -  525600    -     119.161293     0.000425     0.000208         0.035698 
+        "o:write_mixedLayerHeatBudget"                                   -  525600    -     140.875458     0.000439     0.000240         0.035698 
+        "o:reset_alarm_mixedLayerHeatBudget"                             -  525600    -     129.016846     0.000806     0.000225         0.035698 
+        "o:write_timeSeriesStatsMonthly"                                 -  525600    -    1013.007751     7.514371     0.000347         0.035698 
+*         "o:PIO:put_att_id_text"                                        - 2.4e+06    -      41.388992     0.006233     0.000006         0.160971 
+*           "o:PIO:PIOc_put_att_tc"                                      - 3.0e+06    -      46.132008     0.006230     0.000004         0.205898 
+*             "o:PIO:write_total"                                        - 6.0e+06    -    1137.468750     7.320745     0.000004         0.407716 
+*               "o:PIO:flush_output_buffer"                              -  170574    -     814.704407     7.089252     0.000002         0.011585 
+                "o:PIO:flush_buffer"                                     -    5640    -     115.609901     1.088319     0.000646         0.000383 
+                  "o:PIO:PIOc_write_darray_multi"                        -    5640    -     115.503807     1.088294     0.000640         0.000383 
+                    "o:PIO:rearrange_comp2io"                            -    5640    -      66.122086     0.107755     0.000433         0.000383 
+*                     "o:PIO:pio_swapm"                                  -    5655    -      65.013214     0.107554     0.000234         0.000384 
+                    "o:PIO:write_darray_multi_par"                       -    5640    -      22.738586     0.047604     0.000033         0.000383 
+*         "o:PIO:initdecomp_dof"                                         -       5    -       0.179751     0.086247     0.001432         0.000000 
+            "o:PIO:PIOc_initdecomp"                                      -       5    -       0.179693     0.086224     0.001422         0.000000 
+              "o:PIO:box_rearrange_create"                               -       5    -       0.178853     0.085691     0.001401         0.000000 
+*         "o:PIO:put_var1_real"                                          -   92190    -       5.474790     0.002750     0.000030         0.006261 
+*         "o:PIO:put_vara_1d_real"                                       -   23040    -       1.133891     0.002508     0.000024         0.001565 
+*         "o:PIO:put_var1_int"                                           -    1080    -       0.072145     0.000409     0.000037         0.000073 
+          "o:PIO:put_vara_2d_real"                                       -   10800    -       0.712752     0.002627     0.000025         0.000734 
+          "o:PIO:put_vara_3d_real"                                       -    1080    -       0.259782     0.001298     0.000109         0.000073 
+*         "o:PIO:put_att_id_real"                                        -  343628    -       4.742676     0.004910     0.000006         0.023339 
+        "o:reset_alarm_timeSeriesStatsMonthly"                           -  525600    -     180.213242     0.000594     0.000318         0.035698 
+        "o:write_timeSeriesStatsMonthlyMin"                              -  525600    -     321.761658     1.600055     0.000397         0.035698 
+        "o:reset_alarm_timeSeriesStatsMonthlyMin"                        -  525600    -     225.472610     0.002213     0.000373         0.035698 
+        "o:write_timeSeriesStatsMonthlyMax"                              -  525600    -     281.539459     0.581504     0.000391         0.035698 
+        "o:reset_alarm_timeSeriesStatsMonthlyMax"                        -  525600    -     224.033630     0.000803     0.000370         0.035698 
+        "o:write_mocStreamfunction"                                      -  525600    -     128.724365     0.000442     0.000225         0.035698 
+        "o:reset_alarm_mocStreamfunction"                                -  525600    -     117.969734     0.001288     0.000206         0.035698 
+        "o:write_oceanHeatContent"                                       -  525600    -     157.576797     0.897806     0.000218         0.035698 
+        "o:reset_alarm_oceanHeatContent"                                 -  525600    -     114.346146     0.000458     0.000205         0.035698 
+        "o:write_conservationCheck"                                      -  525600    -     157.663391     0.377763     0.000230         0.035698 
+        "o:reset_alarm_conservationCheck"                                -  525600    -     120.609085     0.000425     0.000217         0.035698 
+      "o:PIO:write_darray_double"                                        -    1650    -       0.345951     0.001834     0.000052         0.000112 
+      "o:PIO:write_darray_int"                                           -     540    -       0.055953     0.001227     0.000057         0.000037 
+      "o:PIO:put_var_0d_int"                                             -       1    -       0.000542     0.000542     0.000542         0.000000 
+    "CPL:RUN"                                                            -  525600    -       5.322631     0.005567     0.000001         0.035698 
+      "CPL:TSTAMP_WRITE"                                                 -  525600    -       4.934910     0.005566     0.000000         0.035698 
+  "CPL:TPROF_WRITE"                                                      -  525600    -       1.296841     0.532754     0.000000         0.035698 
+    "CPL:RUN_LOOP_sync1_tprf"                                            -      13    -       0.880440     0.513048     0.000166         0.000001 
+    "CPL:RUN_LOOP_t_prf"                                                 -      13    -       0.193097     0.029802     0.007472         0.000001 
+    "CPL:RUN_LOOP_sync2_tprf"                                            -      13    -       0.191991     0.068200     0.005498         0.000001 
+  "CPL:RUN_LOOP_BSTOP"                                                   -       1    -       8.749772     8.749772     8.749772         0.000000 
+  "CPL:FINAL"                                                            -       1    -       0.574609     0.574609     0.574609         0.000000 
+    "CPL:cime_final"                                                     -       1    -       0.574606     0.574606     0.574606         0.000000 
+      "o_f:analysis_finalize"                                            -       1    -       0.000069     0.000069     0.000069         0.000000 
+        "o_f:finalize_globalStats"                                       -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_layerVolumeWeightedAverage"                        -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_meridionalHeatTransport"                           -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_surfaceAreaWeightedAverages"                       -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_highFrequencyOutput"                               -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_mixedLayerDepths"                                  -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_mixedLayerHeatBudget"                              -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_timeSeriesStatsMonthly"                            -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_timeSeriesStatsMonthlyMin"                         -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_timeSeriesStatsMonthlyMax"                         -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_mocStreamfunction"                                 -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_oceanHeatContent"                                  -       1    -       0.000001     0.000001     0.000001         0.000000 
+        "o_f:finalize_conservationCheck"                                 -       1    -       0.000001     0.000001     0.000001         0.000000 
+      "o_f:PIO:closefile"                                                -      15    -       0.160695     0.047684     0.000263         0.000001 
+        "o_f:PIO:PIOc_closefile"                                         -      15    -       0.160675     0.047683     0.000262         0.000001 
+          "o_f:PIO:PIOc_closefile_write_mode"                            -      13    -       0.157404     0.047651     0.000472         0.000001 
+            "o_f:PIO:write_total"                                        -      13    -       0.157404     0.047651     0.000472         0.000001 
+              "o_f:PIO:flush_output_buffer"                              -      12    -       0.001647     0.000195     0.000107         0.000001 
+      "o_f:PIO:freedecomp"                                               -      28    -       0.161654     0.058189     0.000047         0.000002 
+        "o_f:PIO:PIOc_freedecomp"                                        -      28    -       0.161622     0.058186     0.000046         0.000002 
+      "PIO:finalize"                                                     -      10    -       0.215884     0.215882     0.000000         0.000001 
+        "PIO:PIOc_finalize"                                              -       1    -       0.215841     0.215841     0.215841         0.000000 
+  "CPL:FINAL_sync1_tprf"                                                 -       1    -       0.028858     0.028858     0.028858         0.000000 
+  "CPL:FINAL_t_prf"                                                      y       0    -       0.000000     0.000000     0.000000         0.000000 
+
+Overhead sum =      9.16 wallclock seconds
+Total calls  = 1.349e+08
+
+Multiple parent info for thread 0:
+Columns are count and name for the listed child
+Rows are each parent, with their common child being the last entry, which is indented.
+Count next to each parent is the number of times it called the child.
+Count next to child is total number of times it was called by the listed parents.
+
+       5 o_i:mpaso_init1                 
+       3 o_i:io_read                     
+       8   o_i:PIO:openfile                
+
+       6 o_i:mpaso_init1                 
+      17 o_i:io_read                     
+      23   o_i:PIO:initdecomp_dof          
+
+      69 o_i:PIO:box_rearrange_create    
+      85 o_i:PIO:rearrange_io2comp       
+     154   o_i:PIO:pio_swapm               
+
+       4 o_i:mpaso_init1                 
+      10 o_i:io_read                     
+      14   o_i:PIO:read_darray_1d_int      
+
+      14 o_i:PIO:read_darray_1d_int      
+      16 o_i:PIO:read_darray_2d_int      
+      45 o_i:PIO:read_darray_1d_double   
+      10 o_i:PIO:read_darray_2d_double   
+      85   o_i:PIO:PIOc_read_darray        
+
+       5 o_i:mpaso_init1                 
+      11 o_i:io_read                     
+      16   o_i:PIO:read_darray_2d_int      
+
+       4 o_i:PIO:get_att_id_text         
+       1 o_i:PIO:get_att_id_double       
+       5   o_i:PIO:PIOc_get_att_tc         
+
+      25 o_i:PIO:get_vara_1d_text        
+       2 o_i:PIO:get_vara_1d_double      
+       2 o_i:PIO:get_vara_1d_int         
+       2 o_i:PIO:get_vara_2d_int         
+      31   o_i:PIO:PIOc_get_vars_tc        
+
+       1 o:analysis_compute_startup      
+     361 o:write_globalStats             
+     361 o:write_highFrequencyOutput     
+     360 o:write_meridionalHeatTransport 
+     360 o:write_timeSeriesStatsMonthly  
+     360 o:write_timeSeriesStatsMonthlyMin
+     360 o:write_timeSeriesStatsMonthlyMax
+     360 o:write_oceanHeatContent        
+     360 o:write_conservationCheck       
+      34 CPL:OCN_RUN                     
+    2917   o:PIO:createfile                
+
+    2917 o:PIO:PIOc_createfile           
+ 3.0e+06 o:PIO:PIOc_put_att_tc           
+ 2.8e+06 o:PIO:PIOc_put_vars_tc          
+   15451 o:PIO:PIOc_sync                 
+  109620 o:PIO:PIOc_write_darray         
+    2904 o:PIO:PIOc_closefile_write_mode 
+ 6.0e+06   o:PIO:write_total               
+
+     709 o:analysis_compute_startup      
+  390963 o:write_globalStats             
+  227791 o:write_highFrequencyOutput     
+  218520 o:write_meridionalHeatTransport 
+  532800 o:write_timeSeriesStatsMonthly  
+  251280 o:write_timeSeriesStatsMonthlyMin
+  251280 o:write_timeSeriesStatsMonthlyMax
+  217080 o:write_oceanHeatContent        
+  255240 o:write_conservationCheck       
+   24413 CPL:OCN_RUN                     
+ 2.4e+06   o:PIO:put_att_id_text           
+
+ 2.4e+06 o:PIO:put_att_id_text           
+  209928 o:PIO:put_att_id_double         
+  107929 o:PIO:put_att_id_int            
+  343628 o:PIO:put_att_id_real           
+ 3.0e+06   o:PIO:PIOc_put_att_tc           
+
+     188 o:analysis_compute_startup      
+   67868 o:write_globalStats             
+   67680 o:write_meridionalHeatTransport 
+   67680 o:write_conservationCheck       
+    6512 CPL:OCN_RUN                     
+  209928   o:PIO:put_att_id_double         
+
+      37 o:analysis_compute_startup      
+   13357 o:write_globalStats             
+   13357 o:write_highFrequencyOutput     
+   13320 o:write_meridionalHeatTransport 
+   13320 o:write_timeSeriesStatsMonthly  
+   13320 o:write_timeSeriesStatsMonthlyMin
+   13320 o:write_timeSeriesStatsMonthlyMax
+   13320 o:write_oceanHeatContent        
+   13320 o:write_conservationCheck       
+    1258 CPL:OCN_RUN                     
+  107929   o:PIO:put_att_id_int            
+
+       1 o:analysis_compute_startup      
+   10950 o:write_globalStats             
+    2190 o:write_highFrequencyOutput     
+     360 o:write_meridionalHeatTransport 
+     720 o:write_timeSeriesStatsMonthly  
+     720 o:write_timeSeriesStatsMonthlyMin
+     720 o:write_timeSeriesStatsMonthlyMax
+     360 o:write_oceanHeatContent        
+     360 o:write_conservationCheck       
+     300 CPL:OCN_RUN                     
+   16681   o:PIO:put_vara_1d_text          
+
+   16681 o:PIO:put_vara_1d_text          
+ 2.7e+06 o:PIO:put_var1_double           
+   92190 o:PIO:put_var1_real             
+    1500 o:PIO:put_vara_1d_double        
+     360 o:PIO:put_vara_2d_double        
+   23040 o:PIO:put_vara_1d_real          
+    1080 o:PIO:put_var1_int              
+   10800 o:PIO:put_vara_2d_real          
+    1080 o:PIO:put_vara_3d_real          
+       1 o:PIO:put_var_0d_int            
+ 2.8e+06   o:PIO:PIOc_put_vars_tc          
+
+  164904 o:PIO:write_total               
+    5670 o:PIO:PIOc_write_darray_multi   
+  170574   o:PIO:flush_output_buffer       
+
+      57 o:analysis_compute_startup      
+ 2.7e+06 o:write_globalStats             
+     360 o:write_meridionalHeatTransport 
+   20520 o:write_conservationCheck       
+    1140 CPL:OCN_RUN                     
+ 2.7e+06   o:PIO:put_var1_double           
+
+       1 o:analysis_compute_startup      
+   10950 o:write_globalStats             
+    2190 o:write_highFrequencyOutput     
+     360 o:write_meridionalHeatTransport 
+     360 o:write_timeSeriesStatsMonthly  
+     360 o:write_timeSeriesStatsMonthlyMin
+     360 o:write_timeSeriesStatsMonthlyMax
+     360 o:write_oceanHeatContent        
+     360 o:write_conservationCheck       
+     150 CPL:OCN_RUN                     
+   15451   o:PIO:syncfile                  
+
+  525600 o:se thick tend                 
+  525600 o:se loop fini                  
+ 1.1e+06   o:ocn_tend_thick                
+
+  525600 o:se loop                       
+  525600 o:se loop fini                  
+ 1.1e+06   o:se halo thickness             
+
+  525600 o:KPP input fields              
+ 3.2e+06 o:diagnostic solve              
+ 3.7e+06   o:equation of state             
+
+  525600 o:se implicit vert mix          
+  525600 o:se fini                       
+ 1.1e+06   o:diagnostic solve              
+
+   67868 o:write_highFrequencyOutput     
+   72720 o:write_timeSeriesStatsMonthly  
+   67680 o:write_timeSeriesStatsMonthlyMin
+   67680 o:write_timeSeriesStatsMonthlyMax
+   67680 o:write_oceanHeatContent        
+  343628   o:PIO:put_att_id_real           
+
+       1 o:write_highFrequencyOutput     
+       4 o:write_timeSeriesStatsMonthly  
+       5   o:PIO:initdecomp_dof            
+
+      15 o:PIO:box_rearrange_create      
+    5640 o:PIO:rearrange_comp2io         
+    5655   o:PIO:pio_swapm                 
+
+    2190 o:write_highFrequencyOutput     
+   88560 o:write_timeSeriesStatsMonthly  
+     720 o:write_timeSeriesStatsMonthlyMin
+     720 o:write_timeSeriesStatsMonthlyMax
+   92190   o:PIO:put_var1_real             
+
+   37230 o:write_highFrequencyOutput     
+   34200 o:write_timeSeriesStatsMonthly  
+   17280 o:write_timeSeriesStatsMonthlyMin
+   17280 o:write_timeSeriesStatsMonthlyMax
+    1440 o:write_oceanHeatContent        
+  107430   o:PIO:write_darray_real         
+
+  107430 o:PIO:write_darray_real         
+    1650 o:PIO:write_darray_double       
+     540 o:PIO:write_darray_int          
+  109620   o:PIO:PIOc_write_darray         
+
+     360 o:write_globalStats             
+     360 o:write_conservationCheck       
+     360 o:write_highFrequencyOutput     
+     359 o:write_meridionalHeatTransport 
+     359 o:write_timeSeriesStatsMonthly  
+     359 o:write_timeSeriesStatsMonthlyMin
+     359 o:write_timeSeriesStatsMonthlyMax
+     359 o:write_oceanHeatContent        
+      30 CPL:OCN_RUN                     
+    2905   o:PIO:closefile                 
+
+    1440 o:write_meridionalHeatTransport 
+      60 CPL:OCN_RUN                     
+    1500   o:PIO:put_vara_1d_double        
+
+   22320 o:write_timeSeriesStatsMonthly  
+     360 o:write_timeSeriesStatsMonthlyMin
+     360 o:write_timeSeriesStatsMonthlyMax
+   23040   o:PIO:put_vara_1d_real          
+
+     360 o:write_timeSeriesStatsMonthly  
+     360 o:write_timeSeriesStatsMonthlyMin
+     360 o:write_timeSeriesStatsMonthlyMax
+    1080   o:PIO:put_var1_int              
+
+
+thread 0 had some hash collisions:
+hashtable[0][72] had 2 entries: o_i:equation of state CPL:RUN_LOOP
+hashtable[0][168] had 2 entries: o_i:init_read_conservationCheck o:bcl iters on linear Coriolis
+hashtable[0][176] had 2 entries: o_i:PIO:get_vara_1d_int o:PIO:put_vara_2d_real
+hashtable[0][601] had 2 entries: o_i:SAL Init o:vel del2
+hashtable[0][715] had 2 entries: o_i:PIO:read_darray_nc CPL:comp_init_cc_ice
+hashtable[0][727] had 2 entries: o:bulk_ws o:PIO:rearrange_comp2io
+hashtable[0][907] had 2 entries: o_i:init_read_mixedLayerDepths o:compute_startup_conservationCheck
+hashtable[0][997] had 2 entries: o_i:PIO:openfile o_i:PIO:PIOc_get_vars_tc
+hashtable[0][1123] had 2 entries: o:PIO:put_att_id_int o:non-local flux
+hashtable[0][1146] had 2 entries: o:compute_startup_mixedLayerDepths o:gm bolus velocity
+hashtable[0][1218] had 3 entries: CPL:comp_init_cx_all o:PIO:createfile o:se thick tend
+hashtable[0][1348] had 2 entries: o:vmix solve momentum CPL:o2c_infoexch
+hashtable[0][1359] had 2 entries: o_i:comp_init o:tracer adv
+hashtable[0][1551] had 2 entries: o:analysis_compute_startup o:precompute_conservationCheck
+hashtable[0][1612] had 3 entries: o_i:init_read_surfaceAreaWeightedAverages o:restart_highFrequencyOutput o_f:finalize_timeSeriesStatsMonthlyMin
+hashtable[0][1695] had 2 entries: o:PIO:closefile o_f:finalize_surfaceAreaWeightedAverages
+hashtable[0][1805] had 2 entries: o:se halo F and btr vel o:restart_globalStats
+hashtable[0][1813] had 2 entries: o:PIO:write_darray_int PIO:finalize
+Total collisions thread 0 = 20
+Entry information:
+num_zero = 1744 num_one = 286 num_two = 16 num_more = 2
+Most = 3
+
+Thread 0 total memory usage = 132.144 KB
+  Hashmem                   = 32.768 KB
+  Regionmem                 = 93.312 KB (papimem portion = 0 KB)
+  Parent/child arrays       = 6.064 KB
+
+Total memory usage all threads = 132.144 KB
+
+threadid[0] = 0
