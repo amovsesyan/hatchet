@@ -147,6 +147,20 @@ class GraphFrame:
             return HPCToolkitReader(dirname).read()
         else:
             return HPCToolkitV4Reader(dirname).read()
+    
+    @staticmethod
+    @Logger.loggable
+    def from_gptl(filename_or_dir):
+        """Read in a GPTL log file ore directory.
+        Args:
+            filename_or_dir (str or file-like): name of a GPTL output
+                file, or directory of multiple GPTL output files
+        """
+        # import this lazily to avoid circular dependencies
+        from .readers.gptl_reader import GPTLReader
+
+        return GPTLReader(filename_or_dir).read()
+
 
     @staticmethod
     @Logger.loggable
@@ -2125,7 +2139,6 @@ class GraphFrame:
         self.unify(other_copy)
 
         return self._operator(other_copy, self.dataframe.mul)
-
 
 class InvalidFilter(Exception):
     """Raised when an invalid argument is passed to the filter function."""

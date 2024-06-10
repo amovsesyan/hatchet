@@ -12,15 +12,22 @@ from typing import List
 
 class GPTLReader:
 
-    def __init__(self, log_file: str) -> None:
+    def __init__(self, log_file_or_dir: str) -> None:
+        self.log_file_or_dir = log_file_or_dir
         pass
+
+    def read(self) -> GraphFrame:
+        if os.path.isdir(self.log_file_or_dir):
+            return self.read_log_dir(self.log_file_or_dir)
+        else:
+            return self.read_log_simple(self.log_file_or_dir)
 
     def read_log_simple(self, log_file: str) -> GraphFrame:
         with open(log_file, 'r') as gptl_file:
             lines = gptl_file.readlines()
             for index, line in enumerate(lines):
                 if line.strip().startswith('timer_name'):
-                    print(line)
+                    # print(line)
                     column_names = line.strip().split()
                     lines = lines[index + 1:]
                     break
@@ -95,6 +102,7 @@ class GPTLReader:
 
     def read_single_log(self, log_file: str, start_rank: int, end_rank: int) -> pd.DataFrame:
         with open(log_file, 'r') as gptl_file:
+            rank_range = list(range(start_rank, end_rank))
             lines = gptl_file.readlines()
             # skip first part of the file
             for index, line in enumerate(lines):
@@ -109,7 +117,7 @@ class GPTLReader:
             # manually adjust UTR Overhead column name
             column_names[-2] = 'UTR Overhead'
             column_names.pop(-1)
-            print(column_names)
+            # print(column_names)
             lines = lines[1:]
             dicts = []
             stack: List[Node] = []
@@ -140,12 +148,12 @@ class GPTLReader:
                 # now we go through the columns and add them to the dictionary
                 for i in range(len(column_names)):
                     if column_names[i] in self.numeric_metric_names:
-                        print('column name', column_names[i])
-                        print('value', split_line[i])
+                        # print('column name', column_names[i])
+                        # print('value', split_line[i])
                         node_dict[column_names[i]] = float(split_line[i])
                     else:
                         node_dict[column_names[i]] = split_line[i]
-                print('node dict', node_dict)
+                # print('node dict', node_dict)
 
                 # adjust the stack to the correct depth
                 if node_dict['depth'] < len(stack):
@@ -168,13 +176,13 @@ class GPTLReader:
                         stack[-1].add_child(graph_node)
                 stack.append(graph_node)
                 node_dict['node'] = graph_node
+                node_dict['rank'] = rank_range
                 dicts.append(node_dict)
                         
             # create df from dicts
             df = pd.DataFrame(dicts)
         
         return df
-
             
     def read_log_dir(self, log_dir: str):
         stat_file = os.path.join(log_dir, 'model_timing_stats')
@@ -183,7 +191,7 @@ class GPTLReader:
         # we need to sort them by the number at the end of the file name
         log_files = os.path.join(log_dir, 'model_timing.*')
         log_files = sorted(glob.glob(log_files))
-        print(log_files)
+        # print(log_files)
         
         if len(log_files) == 0:
             raise ValueError('No log files found')
@@ -195,7 +203,7 @@ class GPTLReader:
             ranks.append(int(log_file[offset:]))
         # get total number of ranks from the stat file
         ranks.append(self.get_num_total_ranks(stat_file))
-        print(ranks)
+        # print(ranks)
 
         self.root_nodes: List[Node] = []
 
@@ -206,7 +214,7 @@ class GPTLReader:
             log_file = log_files[i]
             start_rank = ranks[i]
             end_rank = ranks[i + 1]
-            print(log_file)
+            # print(log_file)
             dfs.append(self.read_single_log(log_file, start_rank, end_rank))
             break
         df = pd.concat(dfs)
@@ -215,7 +223,6 @@ class GPTLReader:
         graph.enumerate_traverse()
         gf = GraphFrame(graph, df, [], self.numeric_metric_names)
         return gf
-
                     
     def get_num_total_ranks(self, stat_file) -> int:
         with open(stat_file, 'r') as f:
