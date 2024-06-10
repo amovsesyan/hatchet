@@ -395,3 +395,57 @@ class Graph:
         graph.enumerate_traverse()
 
         return graph
+
+    def intersect(self, other: 'Graph', old_to_new=None) -> 'Graph':
+        """Create the intersection of self and other and return it as a new Graph.
+
+        This creates a new graph and does not modify self or other. The
+        new Graph has entirely new nodes.
+
+        Arguments:
+            other (Graph): another Graph
+            old_to_new (dict, optional): if provided, this dictionary will
+                be populated with mappings from old node -> new node
+
+        Return:
+            (Graph): new Graph containing nodes and edges that are common to self and other
+        """
+        if old_to_new is None:
+            old_to_new = {}
+
+        def intersect_helper(self_list: list[Node], other_list: list[Node], parent: Node) -> list[Node]:
+            """Recursively intersect children of self and other.
+
+            Arguments:
+                self_list (list or tuple): List of children nodes from self
+                other_list (list or tuple): List of children nodes from other
+                parent (Node): Parent node for self and other child(ren)
+
+            Modifies old_to_new (dict): Updated dict mapping old nodes from self and other to new
+                intersected nodes
+
+            Return:
+                (list): list of intersected children
+            """
+            # find intersect at current level
+            matching_nodes = []
+            new_nodes = []
+            for self_node in self_list:
+                for other_node in other_list:
+                    if self_node.frame.get('name') == other_node.frame.get('name'):
+                        matching_nodes.append((self_node, other_node))
+            # create new nodes for intersection and recurse
+            for (self_node, other_node) in matching_nodes:
+                new_node = Node(self_node.frame.copy(), parent=parent)
+                new_nodes.append(new_node)
+                if parent is not None:
+                    parent.add_child(new_node)
+                old_to_new[id(self_node)] = new_node
+                old_to_new[id(other_node)] = new_node
+                intersect_helper(self_node.children, other_node.children, new_node)
+            return new_nodes
+
+        new_roots = intersect_helper(self.roots, other.roots, None)
+        new_graph = Graph(new_roots)
+        new_graph.enumerate_traverse()
+        return new_graph

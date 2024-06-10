@@ -2139,7 +2139,68 @@ class GraphFrame:
         self.unify(other_copy)
 
         return self._operator(other_copy, self.dataframe.mul)
+   
+    def intersect(self, other: 'GraphFrame'):
+        """Returns the intersection of two graphframes as a new graphframe.
 
+        This graphframe is the intersection of self's and other's graphs, and
+        does not modify self or other.
+
+        Return:
+            (GraphFrame): new graphframe
+        """
+        # create a copy of both graphframes
+        self_copy = self.copy()
+        other_copy = other.copy()
+
+        # calculate the exclusive metrics
+        self_copy.calculate_exclusive_metrics()
+        other_copy.calculate_exclusive_metrics()
+        # drop the inclusive metrics
+        self_copy.dataframe.drop(columns=self_copy.inc_metrics, inplace=True)
+        self_copy.inc_metrics = []
+        other_copy.dataframe.drop(columns=other_copy.inc_metrics, inplace=True)
+        other_copy.inc_metrics = []
+        
+        
+        # get the intersection of the two graphs
+        node_map = {}
+        intersect_graph: Graph = self_copy.graph.intersect(other_copy.graph, node_map)
+
+        # store index
+        self_index_names = self_copy.dataframe.index.names
+        other_index_names = other_copy.dataframe.index.names
+        # reset index
+        self_copy.dataframe.reset_index(inplace=True)
+        other_copy.dataframe.reset_index(inplace=True)
+        
+        # update node in df to that in the new graph
+        # if the node is not in the intersection, mark it as none
+        self_copy.dataframe["node"] = self_copy.dataframe["node"].apply(lambda x: node_map.get(id(x), None))
+        other_copy.dataframe["node"] = other_copy.dataframe["node"].apply(
+            lambda x: node_map.get(id(x), None)
+        )
+
+        # drop rows with no node
+        self_copy.dataframe.dropna(subset=['node'], inplace=True)
+        other_copy.dataframe.dropna(subset=['node'], inplace=True)
+
+        # reapply df index
+        self_copy.dataframe.set_index(self_index_names, inplace=True, drop=True)
+        other_copy.dataframe.set_index(other_index_names, inplace=True, drop=True)
+        # recalculate the inclusive metrics
+        self_copy.calculate_inclusive_metrics()
+        other_copy.calculate_inclusive_metrics()
+
+        # merge the two dataframes
+        df = pd.merge(self_copy.dataframe, other_copy.dataframe, how='inner', on=['node', 'name'])
+
+
+        # update graph
+        self_copy.graph = intersect_graph
+        other_copy.graph = intersect_graph
+
+        return df
 class InvalidFilter(Exception):
     """Raised when an invalid argument is passed to the filter function."""
 
