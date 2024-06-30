@@ -2140,7 +2140,7 @@ class GraphFrame:
 
         return self._operator(other_copy, self.dataframe.mul)
    
-    def intersect(self, other: 'GraphFrame'):
+    def intersect(self, other: 'GraphFrame') -> 'GraphFrame':
         """Returns the intersection of two graphframes as a new graphframe.
 
         This graphframe is the intersection of self's and other's graphs, and
@@ -2188,19 +2188,78 @@ class GraphFrame:
         # reapply df index
         self_copy.dataframe.set_index(self_index_names, inplace=True, drop=True)
         other_copy.dataframe.set_index(other_index_names, inplace=True, drop=True)
+        
+        # rename exc metrics
+        new_exc_names = []
+        for exc_metric_name in self_copy.exc_metrics:
+            new_name = exc_metric_name
+            if ' (exc)' in exc_metric_name:
+                new_name = exc_metric_name.replace(' (exc)', '')
+            new_name = 'x_' + new_name
+            self_copy.dataframe.rename(columns={exc_metric_name: new_name}, inplace=True)
+            new_exc_names.append(new_name)
+        self_copy.exc_metrics = new_exc_names
+
+        new_exc_names = []
+        for exc_metric_name in other_copy.exc_metrics:
+            new_name = exc_metric_name
+            if ' (exc)' in exc_metric_name:
+                new_name = exc_metric_name.replace(' (exc)', '')
+            new_name = 'y_' + new_name
+            other_copy.dataframe.rename(columns={exc_metric_name: new_name}, inplace=True)
+            new_exc_names.append(new_name)
+        other_copy.exc_metrics = new_exc_names
+
         # recalculate the inclusive metrics
         self_copy.calculate_inclusive_metrics()
         other_copy.calculate_inclusive_metrics()
 
+        # drop exclusive metrics
+        self_copy.dataframe.drop(columns=self_copy.exc_metrics, inplace=True)
+        self_copy.exc_metrics = []
+        other_copy.dataframe.drop(columns=other_copy.exc_metrics, inplace=True)
+        other_copy.exc_metrics = []
+
         # merge the two dataframes
         df = pd.merge(self_copy.dataframe, other_copy.dataframe, how='inner', on=['node', 'name'])
+
+        # merge the metric lists
+        # self_copy.inc_metrics.extend(other_copy.inc_metrics)
 
 
         # update graph
         self_copy.graph = intersect_graph
+        self_copy.dataframe = df
         other_copy.graph = intersect_graph
 
-        return df
+        return self_copy
+
+    def prune(self, node: Node) -> 'GraphFrame':
+        """ Prunes GraphFrame to remove all nodes that are descendants of the given node."""
+        # create a copy to return
+        self_copy = self.copy()
+        # save the index names
+        self_index_names = self_copy.dataframe.index.names
+        # remove indexes
+        self_copy.dataframe.reset_index(inplace=True)
+        # prune from the df
+        self.__prune_helper(self_copy, node)
+        # reapply the index
+        self_copy.dataframe.set_index(self_index_names, inplace=True, drop=True)
+        # recalculate the inclusive metrics
+        for metric in self_copy.inc_metrics:
+            # calculate value at the node
+            val = self.dataframe.loc[node][metric]
+            for parent in node.parents:
+                self_copy.dataframe.at[parent, metric] -= val
+        # prune from the graph
+        return self_copy.squash()
+
+    def __prune_helper(self, gf, node: Node):
+        """ Helper function for pruning the graphframe"""
+        gf.dataframe = gf.dataframe[gf.dataframe['node'] != node]
+        for child in node.children:
+            self.__prune_helper(gf, child)
 class InvalidFilter(Exception):
     """Raised when an invalid argument is passed to the filter function."""
 
