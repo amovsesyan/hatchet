@@ -70,7 +70,7 @@ class GPTLReader:
                 node_dict = {}
                 node_dict['name'] = timer_name
                 node_dict['node'] = graph_node
-                node_dict['time'] = time
+                node_dict['time (inc)'] = time
 
                 # add the dictionary to the list of dictionaries
                 dicts.append(node_dict)
@@ -91,7 +91,7 @@ class GPTLReader:
             df = df.set_index('node')
 
             # Create the GraphFrame
-            gf = hatchet.GraphFrame(graph, df, [], ['time'])
+            gf = hatchet.GraphFrame(graph, df, [], ['time (inc)'], default_metric='time (inc)')
             return gf    
     
     def check_existing_node(self, name: str, nodes: List[Node]) -> Node:
