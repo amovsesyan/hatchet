@@ -2220,6 +2220,12 @@ class GraphFrame:
         new_gf.graph = intersect_graph
         new_gf.dataframe = df
 
+        # update the default metric
+        if prefixes is not None:
+            new_gf.default_metric = prefixes[0] + new_gf.default_metric
+        else:
+            new_gf.default_metric = str(0) + new_gf.default_metric
+
         return new_gf
 
     def prune(self, node: Node) -> 'GraphFrame':
