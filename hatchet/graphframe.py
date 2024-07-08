@@ -2139,100 +2139,88 @@ class GraphFrame:
         self.unify(other_copy)
 
         return self._operator(other_copy, self.dataframe.mul)
-   
-    def intersect(self, other: 'GraphFrame') -> 'GraphFrame':
-        """Returns the intersection of two graphframes as a new graphframe.
+    
+    @staticmethod
+    def intersect(gfs: ['GraphFrame'], prefixes: [str] = None) -> 'GraphFrame':
+        """Returns the intersection of multiple graphframes as a new graphframe.
 
         This graphframe is the intersection of self's and other's graphs, and
         does not modify self or other.
+        Prefixes are the prefixes of the names of the nodes that are to be
+        intersected.
 
         Return:
             (GraphFrame): new graphframe
         """
+
+        assert len(gfs) > 1, "At least two graphframes are required for intersection."
+
         # create a copy of both graphframes
-        self_copy = self.copy()
-        other_copy = other.copy()
-
-        # calculate the exclusive metrics
-        self_copy.calculate_exclusive_metrics()
-        other_copy.calculate_exclusive_metrics()
-        # drop the inclusive metrics
-        self_copy.dataframe.drop(columns=self_copy.inc_metrics, inplace=True)
-        self_copy.inc_metrics = []
-        other_copy.dataframe.drop(columns=other_copy.inc_metrics, inplace=True)
-        other_copy.inc_metrics = []
-        
-        
-        # get the intersection of the two graphs
+        copys: list[GraphFrame] = [gf.copy() for gf in gfs]
+        for gf in copys:
+            # calculate the exclusive metrics
+            gf.calculate_exclusive_metrics()
+            # drop the inclusive metrics
+            gf.dataframe.drop(columns=gf.inc_metrics, inplace=True)
+            gf.inc_metrics = []
+        copy_graphs = [gf.graph for gf in copys]
+        # get the intersection of the graphs
         node_map = {}
-        intersect_graph: Graph = self_copy.graph.intersect(other_copy.graph, node_map)
-
-        # store index
-        self_index_names = self_copy.dataframe.index.names
-        other_index_names = other_copy.dataframe.index.names
-        # reset index
-        self_copy.dataframe.reset_index(inplace=True)
-        other_copy.dataframe.reset_index(inplace=True)
+        # intersect_graph: Graph = self_copy.graph.intersect(other_copy.graph, node_map)
+        intersect_graph = Graph.intersect(copy_graphs, node_map)
         
-        # update node in df to that in the new graph
-        # if the node is not in the intersection, mark it as none
-        self_copy.dataframe["node"] = self_copy.dataframe["node"].apply(lambda x: node_map.get(id(x), None))
-        other_copy.dataframe["node"] = other_copy.dataframe["node"].apply(
-            lambda x: node_map.get(id(x), None)
-        )
-
-        # drop rows with no node
-        self_copy.dataframe.dropna(subset=['node'], inplace=True)
-        other_copy.dataframe.dropna(subset=['node'], inplace=True)
-
-        # reapply df index
-        self_copy.dataframe.set_index(self_index_names, inplace=True, drop=True)
-        other_copy.dataframe.set_index(other_index_names, inplace=True, drop=True)
         
-        # rename exc metrics
-        new_exc_names = []
-        for exc_metric_name in self_copy.exc_metrics:
-            new_name = exc_metric_name
-            if ' (exc)' in exc_metric_name:
-                new_name = exc_metric_name.replace(' (exc)', '')
-            new_name = 'x_' + new_name
-            self_copy.dataframe.rename(columns={exc_metric_name: new_name}, inplace=True)
-            new_exc_names.append(new_name)
-        self_copy.exc_metrics = new_exc_names
+        for index, gf in enumerate(copys):
+            # store index
+            index_names = gf.dataframe.index.names
+            # reset index
+            gf.dataframe.reset_index(inplace=True)
+            # update node in df to that in the new graph
+            # if the node is not in the intersection, mark it as none
+            gf.dataframe["node"] = gf.dataframe["node"].apply(lambda x: node_map.get(id(x), None))
+            # drop rows with no node
+            gf.dataframe.dropna(subset=['node'], inplace=True)
+            # reapply index
+            gf.dataframe.set_index(index_names, inplace=True, drop=True)
+            # rename exc metrics
+            new_exc_names = []
+            for exc_metric_name in gf.exc_metrics:
+                new_name = exc_metric_name
+                if ' (exc)' in exc_metric_name:
+                    new_name = exc_metric_name.replace(' (exc)', '')
+                if prefixes is not None:
+                    new_name = prefixes[index] + new_name
+                else :
+                    new_name = str(index) + new_name
+                gf.dataframe.rename(columns={exc_metric_name: new_name}, inplace=True)
+                new_exc_names.append(new_name)
+            gf.exc_metrics = new_exc_names
+        
+            # recalculate the inclusive metrics
+            gf.calculate_inclusive_metrics()
 
-        new_exc_names = []
-        for exc_metric_name in other_copy.exc_metrics:
-            new_name = exc_metric_name
-            if ' (exc)' in exc_metric_name:
-                new_name = exc_metric_name.replace(' (exc)', '')
-            new_name = 'y_' + new_name
-            other_copy.dataframe.rename(columns={exc_metric_name: new_name}, inplace=True)
-            new_exc_names.append(new_name)
-        other_copy.exc_metrics = new_exc_names
+            # drop the exclusive metrics
+            # gf.dataframe.drop(columns=gf.exc_metrics, inplace=True)
+            # gf.exc_metrics = []
+        
+        # merge the dataframes
+        df = copys[0].dataframe
+        for gf in copys[1:]:
+            df = pd.merge(df, gf.dataframe, how='inner', on=['node', 'name'])
+        # df = pd.join([gf.dataframe for gf in copys], how='inner', on=['node', 'name'])
+        # df = pd.concat([gf.dataframe for gf in copys], axis=1, join='inner')
 
-        # recalculate the inclusive metrics
-        self_copy.calculate_inclusive_metrics()
-        other_copy.calculate_inclusive_metrics()
-
-        # drop exclusive metrics
-        self_copy.dataframe.drop(columns=self_copy.exc_metrics, inplace=True)
-        self_copy.exc_metrics = []
-        other_copy.dataframe.drop(columns=other_copy.exc_metrics, inplace=True)
-        other_copy.exc_metrics = []
-
-        # merge the two dataframes
-        df = pd.merge(self_copy.dataframe, other_copy.dataframe, how='inner', on=['node', 'name'])
-
+        
         # merge the metric lists
         # self_copy.inc_metrics.extend(other_copy.inc_metrics)
 
 
         # update graph
-        self_copy.graph = intersect_graph
-        self_copy.dataframe = df
-        other_copy.graph = intersect_graph
+        new_gf = copys[0]
+        new_gf.graph = intersect_graph
+        new_gf.dataframe = df
 
-        return self_copy
+        return new_gf
 
     def prune(self, node: Node) -> 'GraphFrame':
         """ Prunes GraphFrame to remove all nodes that are descendants of the given node."""

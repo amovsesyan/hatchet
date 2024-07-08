@@ -7,6 +7,8 @@ from collections import defaultdict
 
 from .node import Node, traversal_order
 
+from typing import Dict
+
 
 def index_by(attr, objects):
     """Put objects into lists based on the value of an attribute.
@@ -395,8 +397,9 @@ class Graph:
         graph.enumerate_traverse()
 
         return graph
-
-    def intersect(self, other: 'Graph', old_to_new=None) -> 'Graph':
+    
+    @staticmethod
+    def intersect(graphs: list['Graph'], old_to_new=None) -> 'Graph':
         """Create the intersection of self and other and return it as a new Graph.
 
         This creates a new graph and does not modify self or other. The
@@ -413,12 +416,11 @@ class Graph:
         if old_to_new is None:
             old_to_new = {}
 
-        def intersect_helper(self_list: list[Node], other_list: list[Node], parent: Node) -> list[Node]:
+        def intersect_helper(all_lists: list[list[Node]], parent: Node) -> list[Node]:
             """Recursively intersect children of self and other.
 
             Arguments:
-                self_list (list or tuple): List of children nodes from self
-                other_list (list or tuple): List of children nodes from other
+                all_lists (list): List of lists of children nodes from all graphs
                 parent (Node): Parent node for self and other child(ren)
 
             Modifies old_to_new (dict): Updated dict mapping old nodes from self and other to new
@@ -428,24 +430,53 @@ class Graph:
                 (list): list of intersected children
             """
             # find intersect at current level
-            matching_nodes = []
             new_nodes = []
-            for self_node in self_list:
-                for other_node in other_list:
-                    if self_node.frame.get('name') == other_node.frame.get('name'):
-                        matching_nodes.append((self_node, other_node))
+            matching_nodes: Dict[str, list[Node]] = {}
+            # General Algorithm for finding intersection
+            # have 2 dicts, matching_nodes and next_matching_nodes
+            # fill matching_nodes with the first list of nodes
+            # for each subsequent list of nodes, fill next_matching_nodes with nodes that have the same name
+            # as the nodes in matching_nodes
+            # after all lists have been processed, the nodes in matching_nodes are the intersection
+            # of all lists
+
+            # In theory it's linear time with respect to the number of comparisons
+
+
+            
+            for node in all_lists[0]:
+                node_name = node.frame.get('name')
+                matching_nodes[node_name] = [node]
+
+
+            for node_list in all_lists[1:]:
+                next_matching_nodes = {}
+                for node in node_list:
+                    node_name = node.frame.get('name')
+                    if node_name in matching_nodes:
+                        ml = matching_nodes[node_name]
+                        ml.append(node)
+                        next_matching_nodes[node_name] = ml
+                
+                matching_nodes = next_matching_nodes
+            
             # create new nodes for intersection and recurse
-            for (self_node, other_node) in matching_nodes:
-                new_node = Node(self_node.frame.copy(), parent=parent)
+            for node_list in matching_nodes.values():
+                new_node = Node(node_list[0].frame.copy(), parent=parent)
                 new_nodes.append(new_node)
                 if parent is not None:
                     parent.add_child(new_node)
-                old_to_new[id(self_node)] = new_node
-                old_to_new[id(other_node)] = new_node
-                intersect_helper(self_node.children, other_node.children, new_node)
-            return new_nodes
+                new_children_list = []
+                for old_node in node_list:
+                    old_to_new[id(old_node)] = new_node
+                    new_children_list.append(old_node.children)
 
-        new_roots = intersect_helper(self.roots, other.roots, None)
+                intersect_helper(new_children_list, new_node)
+            return new_nodes
+        old_roots_lists: list[list[Node]] = []
+        for graph in graphs:
+            old_roots_lists.append(graph.roots)
+        new_roots = intersect_helper(old_roots_lists, None)
         new_graph = Graph(new_roots)
         new_graph.enumerate_traverse()
         return new_graph
