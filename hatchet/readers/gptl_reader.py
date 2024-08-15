@@ -202,7 +202,8 @@ class GPTLReader:
         for log_file in log_files:
             ranks.append(int(log_file[offset:]))
         # get total number of ranks from the stat file
-        ranks.append(self.get_num_total_ranks(stat_file))
+        self.read_stat_file(stat_file)
+        ranks.append(self.num_total_ranks)
         # print(ranks)
 
         self.root_nodes: List[Node] = []
@@ -232,5 +233,68 @@ class GPTLReader:
                 # '***** GLOBAL STATISTICS (  3456 MPI TASKS) *****'
                 if line.startswith('***** GLOBAL STATISTICS'):
                     return int(line.split()[4])
+        return 0
+    
+    def read_stat_file(self, stat_file):
+        print('reading stat file')
+        with open(stat_file, 'r') as f:
+            lines = f.readlines()
+            for index, line in enumerate(lines):
+                # Find the line that contains the number of ranks
+                # '***** GLOBAL STATISTICS (  3456 MPI TASKS) *****'
+                if line.startswith('***** GLOBAL STATISTICS'):
+                    self.num_total_ranks = line.split()[4]
+                
+                # we want to stop at line that looks like this
+                # name                                            on  processes  threads        count      walltotal   wallmax (proc   thrd  )   wallmin (proc   thrd  )
+                # Stats for thread 0:
+                if line.startswith('name '):
+                    metric_arr = line.strip().split()    
+                    metric_arr = [elem.strip('(').strip(')') for elem in metric_arr if elem.strip('(').strip(')') != '']
+                    # we're looking for specific metrics
+                    # let's assert their positions
+                    assert metric_arr[0] == 'name'
+                    assert metric_arr[3] == 'threads'
+                    assert metric_arr[4] == 'count'
+                    assert metric_arr[5] == 'walltotal'
+                    assert metric_arr[6] == 'wallmax'
+                    assert metric_arr[9] == 'wallmin'
+                    lines = lines[index + 1:]
+                    break
+            # set up arrays to make a df
+            names = []
+            threads = []
+            counts = []
+            walltotals = []
+            wallmaxs = []
+            wallmins = []
+
+            for line in lines:
+                line_arr = line.strip().split('"')
+                if(len(line_arr) < 2):
+                    continue
+                name = line_arr[1]
+                line_arr = line_arr[2].split()
+                for elem in line_arr:
+                    elem = elem.strip('(').strip(')')
+                    print(elem)
+                line_arr = [elem.strip('(').strip(')') for elem in line_arr if elem.strip('(').strip(')') != '']
+                
+                names.append(name)
+                threads.append(line_arr[2])
+                counts.append(line_arr[3])
+                walltotals.append(line_arr[4])
+                wallmaxs.append(line_arr[5])
+                wallmins.append(line_arr[8])
+
+                # # line_arr = [name] + line_arr
+                # print(metric_arr)
+                # print(line_arr)
+                # break
+            self.stat_df = pd.DataFrame({'name': names, 'threads': threads, 'count': counts, 'walltotal': walltotals, 'wallmax': wallmaxs, 'wallmin': wallmins})
+            self.stat_df = self.stat_df.set_index('name')
+            print(self.stat_df.head())
+            print(self.stat_df.loc['CPL:INIT']['threads'])
+
         return 0
                 
