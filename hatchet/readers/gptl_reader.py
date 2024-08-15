@@ -221,7 +221,7 @@ class GPTLReader:
         df = df.set_index('node')
         graph = Graph(self.root_nodes)
         graph.enumerate_traverse()
-        gf = GraphFrame(graph, df, [], self.numeric_metric_names)
+        gf = GraphFrame(graph, df, [], self.numeric_metric_names, default_metric='Wallclock')
         return gf
                     
     def get_num_total_ranks(self, stat_file) -> int:
