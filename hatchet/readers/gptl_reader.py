@@ -95,14 +95,16 @@ class GPTLReader:
             return gf    
     
     def check_existing_node(self, name: str, nodes: List[Node]) -> Node:
+        # print('checking for node', name, 'in', nodes)
         for root in nodes:
             if root.frame.get('name') == name:
+                # print('found node', name)
                 return root
         return None
 
     def read_single_log(self, log_file: str, start_rank: int, end_rank: int) -> pd.DataFrame:
         with open(log_file, 'r') as gptl_file:
-            rank_range = list(range(start_rank, end_rank))
+            rank_range = (start_rank, end_rank)
             lines = gptl_file.readlines()
             # skip first part of the file
             for index, line in enumerate(lines):
@@ -112,11 +114,11 @@ class GPTLReader:
                     lines = lines[index + 1:]
                     break
             # read column names
-            column_names = lines[0].strip().split()
-            # column_names = [name.strip() for name in column_names if name != '']
-            # manually adjust UTR Overhead column name
-            column_names[-2] = 'UTR Overhead'
-            column_names.pop(-1)
+            # column_names = lines[0].strip().split()
+            # # column_names = [name.strip() for name in column_names if name != '']
+            # # manually adjust UTR Overhead column name
+            # column_names[-2] = 'UTR Overhead'
+            # column_names.pop(-1)
             # print(column_names)
             lines = lines[1:]
             dicts = []
@@ -146,13 +148,13 @@ class GPTLReader:
                 # print('col names', column_names)
                 # print('split line', split_line)
                 # now we go through the columns and add them to the dictionary
-                for i in range(len(column_names)):
-                    if column_names[i] in self.numeric_metric_names:
-                        # print('column name', column_names[i])
-                        # print('value', split_line[i])
-                        node_dict[column_names[i]] = float(split_line[i])
-                    else:
-                        node_dict[column_names[i]] = split_line[i]
+                # for i in range(len(column_names)):
+                #     if column_names[i] in self.numeric_metric_names:
+                #         # print('column name', column_names[i])
+                #         # print('value', split_line[i])
+                #         node_dict[column_names[i]] = float(split_line[i])
+                #     else:
+                #         node_dict[column_names[i]] = split_line[i]
                 # print('node dict', node_dict)
 
                 # adjust the stack to the correct depth
@@ -162,6 +164,7 @@ class GPTLReader:
                 # check if this node already exists
                 graph_node = None
                 if node_dict['depth'] == 0:
+                    # print('looking for node', node_dict['name'], 'in', self.root_nodes)
                     graph_node = self.check_existing_node(node_dict['name'], self.root_nodes)
                 else:
                     graph_node = self.check_existing_node(node_dict['name'], stack[-1].children)
@@ -174,15 +177,48 @@ class GPTLReader:
                     else:
                         graph_node = Node(frame, parent=stack[-1])
                         stack[-1].add_child(graph_node)
+                
+                    node_dict['node'] = graph_node
+                    # node_dict['rank'] = rank_range
+                    graph_node.frame.attrs['ranks'] = [rank_range]
+
+                    values_dict = self.stats_dict[node_dict['name']]
+                    for key in values_dict:
+                        node_dict[key] = values_dict[key]
+                    
+                    dicts.append(node_dict)
+                else:
+                    # node already exists - let's updates rank ranges
+                    self._update_rank_ranges(graph_node, rank_range)
+
+                
                 stack.append(graph_node)
-                node_dict['node'] = graph_node
-                node_dict['rank'] = rank_range
-                dicts.append(node_dict)
                         
             # create df from dicts
             df = pd.DataFrame(dicts)
         
         return df
+    
+    def _update_rank_ranges(self, graph_node: Node, new_rank_range: (int, int)):
+        # existing_ranges: List[(int, int)] = graph_node.frame.attrs.get('ranks')
+        ranges = graph_node.frame.attrs.get('ranks')
+        # print('merginf ranges', ranges, new_rank_range)
+        # exit(0)
+        if(ranges[-1][1] == new_rank_range[0]):
+            ranges[-1] = (ranges[-1][0], new_rank_range[1])
+        else:
+            ranges.append(new_rank_range)
+        graph_node.frame.attrs['ranks'] = ranges
+        # new_ranges = []
+        # for begin,end in sorted(ranges):
+        #     if new_ranges and new_ranges[-1][1] >= begin - 1:
+        #         new_ranges[-1][1] = max(new_ranges[-1][1], end)
+        #     else:
+        #         new_ranges.append([begin, end])
+        # graph_node.frame.attrs['ranks'] = new_ranges
+
+
+
             
     def read_log_dir(self, log_dir: str):
         stat_file = os.path.join(log_dir, 'model_timing_stats')
@@ -216,27 +252,30 @@ class GPTLReader:
             start_rank = ranks[i]
             end_rank = ranks[i + 1]
             # print(log_file)
-            dfs.append(self.read_single_log(log_file, start_rank, end_rank))
-            break
+            new_df = self.read_single_log(log_file, start_rank, end_rank)
+            print('new df', new_df)
+            dfs.append(new_df)
+            # break
         df = pd.concat(dfs)
+        df['rank_ranges'] = df['node'].apply(lambda x: x.frame.attrs['ranks'])
         df = df.set_index('node')
         graph = Graph(self.root_nodes)
         graph.enumerate_traverse()
         gf = GraphFrame(graph, df, [], self.numeric_metric_names, default_metric='Wallclock')
         return gf
                     
-    def get_num_total_ranks(self, stat_file) -> int:
-        with open(stat_file, 'r') as f:
-            lines = f.readlines()
-            for line in lines:
-                # Find the line that contains the number of ranks
-                # '***** GLOBAL STATISTICS (  3456 MPI TASKS) *****'
-                if line.startswith('***** GLOBAL STATISTICS'):
-                    return int(line.split()[4])
-        return 0
+    # def get_num_total_ranks(self, stat_file) -> int:
+    #     with open(stat_file, 'r') as f:
+    #         lines = f.readlines()
+    #         for line in lines:
+    #             # Find the line that contains the number of ranks
+    #             # '***** GLOBAL STATISTICS (  3456 MPI TASKS) *****'
+    #             if line.startswith('***** GLOBAL STATISTICS'):
+    #                 return int(line.split()[4])
+    #     return 0
     
     def read_stat_file(self, stat_file):
-        print('reading stat file')
+        # print('reading stat file')
         with open(stat_file, 'r') as f:
             lines = f.readlines()
             for index, line in enumerate(lines):
@@ -262,12 +301,13 @@ class GPTLReader:
                     lines = lines[index + 1:]
                     break
             # set up arrays to make a df
-            names = []
-            threads = []
-            counts = []
-            walltotals = []
-            wallmaxs = []
-            wallmins = []
+            # names = []
+            # threads = []
+            # counts = []
+            # walltotals = []
+            # wallmaxs = []
+            # wallmins = []
+            self.stats_dict = {}
 
             for line in lines:
                 line_arr = line.strip().split('"')
@@ -277,24 +317,33 @@ class GPTLReader:
                 line_arr = line_arr[2].split()
                 for elem in line_arr:
                     elem = elem.strip('(').strip(')')
-                    print(elem)
+                    # print(elem)
                 line_arr = [elem.strip('(').strip(')') for elem in line_arr if elem.strip('(').strip(')') != '']
                 
-                names.append(name)
-                threads.append(line_arr[2])
-                counts.append(line_arr[3])
-                walltotals.append(line_arr[4])
-                wallmaxs.append(line_arr[5])
-                wallmins.append(line_arr[8])
+                threads = int(line_arr[2])
+                count = int(float((line_arr[3])))
+                walltotal = float(line_arr[4])
+                wallmax = float(line_arr[5])
+                wallmin = float(line_arr[8])
+                self.stats_dict[name] = {'threads': threads, 'count': count, 'walltotal': walltotal, 'wallmax': wallmax, 'wallmin': wallmin}
+
+                # names.append(name)
+                # threads.append(line_arr[2])
+                # counts.append(line_arr[3])
+                # walltotals.append(line_arr[4])
+                # wallmaxs.append(line_arr[5])
+                # wallmins.append(line_arr[8])
 
                 # # line_arr = [name] + line_arr
                 # print(metric_arr)
                 # print(line_arr)
                 # break
-            self.stat_df = pd.DataFrame({'name': names, 'threads': threads, 'count': counts, 'walltotal': walltotals, 'wallmax': wallmaxs, 'wallmin': wallmins})
-            self.stat_df = self.stat_df.set_index('name')
-            print(self.stat_df.head())
-            print(self.stat_df.loc['CPL:INIT']['threads'])
+            # self.stat_df = pd.DataFrame({'name': names, 'threads': threads, 'count': counts, 'walltotal': walltotals, 'wallmax': wallmaxs, 'wallmin': wallmins})
+            # self.stat_df = self.stat_df.set_index('name')
+            stat_df = pd.DataFrame(self.stats_dict,)
+            # print(stat_df)
+            # print(self.stat_df.head())
+            # print(self.stat_df.loc['CPL:INIT']['threads'])
 
         return 0
                 
