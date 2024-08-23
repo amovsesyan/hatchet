@@ -161,7 +161,7 @@ class GPTLReader:
                 
                 # Create new graph node if it doesn't exist
                 if graph_node is None:
-                    frame = Frame({'name': node_dict['name']})
+                    frame = Frame({'name': node_dict['name'], 'ranks': [rank_range]})
                     if node_dict['depth'] == 0:
                         graph_node = Node(frame, parent=None)
                         self.root_nodes.append(graph_node)
@@ -170,7 +170,6 @@ class GPTLReader:
                         stack[-1].add_child(graph_node)
                 
                     node_dict['node'] = graph_node
-                    graph_node.frame.attrs['ranks'] = [rank_range]
 
                     values_dict = self.stats_dict[node_dict['name']]
                     for key in values_dict:
@@ -220,7 +219,7 @@ class GPTLReader:
         
         self.root_nodes: List[Node] = []
 
-        self.numeric_metric_names = ['Wallclock', 'max', 'min', 'UTR Overhead']
+        self.numeric_metric_names = ['wallmax (inc)', 'walltotal (inc)', 'wallmin (inc)']
 
         dfs = []
         for i in range(len(log_files)):
@@ -231,11 +230,12 @@ class GPTLReader:
             new_df = self.read_single_log(log_file, start_rank, end_rank)
             dfs.append(new_df)
         df = pd.concat(dfs)
-        df['rank_ranges'] = df['node'].apply(lambda x: x.frame.attrs['ranks'])
+        # remove ranks from node and put into column
+        df['rank_ranges'] = df['node'].apply(lambda x: x.frame.attrs.pop('ranks'))
         df = df.set_index('node')
         graph = Graph(self.root_nodes)
         graph.enumerate_traverse()
-        gf = GraphFrame(graph, df, [], self.numeric_metric_names, default_metric='Wallclock')
+        gf = GraphFrame(graph, df, [], self.numeric_metric_names, default_metric='wallmax (inc)')
         return gf
 
     def read_stat_file(self, stat_file):
@@ -287,4 +287,4 @@ class GPTLReader:
                 wallmin = float(line_arr[8])
 
                 # add the operation to the stats dict
-                self.stats_dict[name] = {'threads': threads, 'count': count, 'walltotal': walltotal, 'wallmax': wallmax, 'wallmin': wallmin}                
+                self.stats_dict[name] = {'threads': threads, 'count': count, 'walltotal (inc)': walltotal, 'wallmax (inc)': wallmax, 'wallmin (inc)': wallmin}                
