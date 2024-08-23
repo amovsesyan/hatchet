@@ -865,6 +865,7 @@ class GraphFrame:
             "%s%s" % (s, self.metadata["hatchet_inclusive_suffix"])
             for s in self.exc_metrics
         ]
+        print("inc_metrics:", self.inc_metrics)
         self.subgraph_sum(self.exc_metrics, self.inc_metrics)
 
     @Logger.loggable
@@ -2158,7 +2159,6 @@ class GraphFrame:
         # create a copy of both graphframes
         copys: list[GraphFrame] = [gf.copy() for gf in gfs]
         for gf in copys:
-            # calculate the exclusive metrics
             gf.calculate_exclusive_metrics()
             # drop the inclusive metrics
             gf.dataframe.drop(columns=gf.inc_metrics, inplace=True)
@@ -2166,7 +2166,6 @@ class GraphFrame:
         copy_graphs = [gf.graph for gf in copys]
         # get the intersection of the graphs
         node_map = {}
-        # intersect_graph: Graph = self_copy.graph.intersect(other_copy.graph, node_map)
         intersect_graph = Graph.intersect(copy_graphs, node_map)
         
         
@@ -2182,6 +2181,16 @@ class GraphFrame:
             gf.dataframe.dropna(subset=['node'], inplace=True)
             # reapply index
             gf.dataframe.set_index(index_names, inplace=True, drop=True)
+            # rename all columns with prefix
+            for column in gf.dataframe.columns:
+                # skip if columns is 'name
+                if column == 'name' or column == 'node' or column == 'depth':
+                    continue
+                if prefixes is not None:
+                    new_name = prefixes[index] + column
+                else:
+                    new_name = str(index) + column
+                gf.dataframe.rename(columns={column: new_name}, inplace=True)
             # rename exc metrics
             new_exc_names = []
             for exc_metric_name in gf.exc_metrics:
@@ -2189,36 +2198,33 @@ class GraphFrame:
                 if ' (exc)' in exc_metric_name:
                     new_name = exc_metric_name.replace(' (exc)', '')
                 if prefixes is not None:
+                    exc_metric_name = prefixes[index] + exc_metric_name
                     new_name = prefixes[index] + new_name
                 else :
+                    exc_metric_name = str(index) + exc_metric_name
                     new_name = str(index) + new_name
                 gf.dataframe.rename(columns={exc_metric_name: new_name}, inplace=True)
                 new_exc_names.append(new_name)
             gf.exc_metrics = new_exc_names
-        
-            # recalculate the inclusive metrics
-            gf.calculate_inclusive_metrics()
+            
+        new_gf = copys[0]
 
-            # drop the exclusive metrics
-            # gf.dataframe.drop(columns=gf.exc_metrics, inplace=True)
-            # gf.exc_metrics = []
-        
         # merge the dataframes
         df = copys[0].dataframe
         for gf in copys[1:]:
             df = pd.merge(df, gf.dataframe, how='inner', on=['node', 'name'])
-        # df = pd.join([gf.dataframe for gf in copys], how='inner', on=['node', 'name'])
-        # df = pd.concat([gf.dataframe for gf in copys], axis=1, join='inner')
-
+            new_gf.exc_metrics.extend(gf.exc_metrics)
         
         # merge the metric lists
         # self_copy.inc_metrics.extend(other_copy.inc_metrics)
 
 
         # update graph
-        new_gf = copys[0]
         new_gf.graph = intersect_graph
         new_gf.dataframe = df
+        
+        # recalculate inc metrics
+        new_gf.calculate_inclusive_metrics()
 
         # update the default metric
         if prefixes is not None:
